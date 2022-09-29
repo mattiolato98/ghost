@@ -2,7 +2,7 @@
 .idea/
 ghost_base_folder/email_settings.py
 *__pycache__
-db.sqlite3
+django-app/db.sqlite3
 .vscode/
 .env
 .Trash-1000
