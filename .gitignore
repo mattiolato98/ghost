@@ -5,3 +5,4 @@ ghost_base_folder/email_settings.py
 db.sqlite3
 .vscode/
 .env
+.Trash-1000
