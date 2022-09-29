@@ -1,0 +1,27 @@
+services:
+    app-db:
+        image: postgres:alpine
+        container_name: ${POSTGRES_HOSTNAME}
+        env_file:
+            - .dev.env
+        ports:
+            - "${POSTGRES_PORT}:5432"
+        volumes:
+            - app-data:${PGDATA}
+    app-web:
+        image: ghost-web-dev
+        container_name: ghost-web-dev
+        build:
+            context: .
+            dockerfile: django.Dockerfile
+        env_file:
+            - .dev.env
+        volumes:
+            - ./django-app:${GHOST_APP_HOME}
+        ports:
+            - "8000:8000"
+        depends_on:
+            - app-db
+
+volumes:
+    app-data:
