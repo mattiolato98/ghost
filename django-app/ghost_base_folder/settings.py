@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     # local
     'transcribe',
     'user_management',
+
+    # 3d party
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
