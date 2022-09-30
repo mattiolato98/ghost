@@ -1,3 +1,4 @@
+from crispy_bootstrap5.bootstrap5 import FloatingField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Submit
 from django import forms
@@ -17,19 +18,16 @@ class AudioForm(forms.ModelForm):
 
         self.helper.layout = Layout(
             Row(
-                Column('name', css_class='form-group mb-0'),
+                Column(FloatingField('name'), css_class='form-group col-8'),
+                Column(FloatingField('audio'), css_class='form-group col-4'),
                 css_class='form-row'
             ),
             Row(
-                Column('audio', css_class='form-group'),
-                css_class='form-row',
-            ),
-            Row(
                 Column(
-                    Submit('submit', _('Insert'), css_class='btn site-btn mb-3 w-75 font-5'),
-                    css_class='d-flex align-items-end justify-content-end'
+                    Submit('submit', _('Transcribe'), css_class='btn site-btn w-auto font-5 px-sm-5'),
+                    css_class='d-flex align-items-end justify-content-end mobile-center'
                 ),
-                css_class='form-row '
+                css_class='form-row'
             ),
         )
 
