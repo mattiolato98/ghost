@@ -1,0 +1,13 @@
+<nav class="navbar sticky-top site-box mb-4">
+    <div class="container-fluid">
+        <span class="h1 logo-font site-red-text">Ghost</span>
+        <div class="d-flex justify-content-end px-4">
+            <a href="{% url 'user_management:settings' %}" class="path-link mr-2">
+                <i class="fas fa-cog"></i>
+            </a>
+            <a href="{% url 'user_management:logout' %}" class="path-link font-6 no-decoration">
+                Logout <i class="fas fa-sign-out-alt ml-2"></i>
+            </a>
+        </div>
+    </div>
+</nav>
