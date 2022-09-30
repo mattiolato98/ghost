@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     Ciao {{ user.username }} <i class="fa-solid fa-heart"></i>
-    <div class="mb-3">
-        <label for="formFile" class="form-label">Select an audio from your pc</label>
-        <input class="form-control" type="file" accept="audio/*" id="formFile">
-    </div>
-    <a class="btn btn-info">Transcribe</a>
+    {% crispy form %}
 {% endblock %}
