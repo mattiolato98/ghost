@@ -2,7 +2,30 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    {{ block.super }} New audio
+{% endblock %}
+
 {% block content %}
-    Ciao {{ user.username }} <i class="fa-solid fa-heart"></i>
-    {% crispy form %}
+    <div class="row justify-content-center p-4">
+        <div class="site-box p-4 bg-white col-sm-12 col-lg-7 shadow">
+            <div class="row mb-3">
+                <div class="col">
+                    <a href="{% url 'transcribe:transcribe' %}" class="font-6 path-link no-decoration">
+                        <i class="fas fa-chevron-left mr-2"></i>
+                        {% translate "Back" %}
+                    </a>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="site-color header-font">{% translate "Drop an audio" %}</h2>
+                    <span class="text-muted header-font">{% trans "Transcription may take up to the duration of the audio" %}</span>
+                </div>
+            </div>
+            <div class="row">
+                {% crispy form %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
