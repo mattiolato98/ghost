@@ -1,0 +1,203 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    background-color: #f2f2f2;
+    color: #525252;
+}
+
+#site-main-page {
+    min-height: 100vh;
+}
+
+.site-box {
+    border-radius: 15px;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+h5 {
+    font-weight: 500;
+}
+
+.font-1 {
+    font-weight: 100;
+}
+
+.font-3 {
+    font-weight: 300;
+}
+
+.font-4 {
+    font-weight: 400;
+}
+
+.font-5 {
+    font-weight: 500;
+}
+
+.font-6 {
+    font-weight: 600;
+}
+
+.font-7 {
+    font-weight: 700;
+}
+
+.font-8 {
+    font-weight: 800;
+}
+
+.font-9 {
+    font-weight: 900;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 0.25rem;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 0.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.column-flex {
+    flex-direction: column;
+    align-items: center;
+}
+
+.no-decoration {
+    text-decoration-line: none !important;
+}
+
+.no-decoration:hover {
+    text-decoration-line: none !important;
+}
+
+.site-red-text {
+    color: #FF6B6C !important;
+}
+
+.site-blue-text {
+    color: #0075A2 !important;
+}
+
+.site-green-text {
+    color: #69DC9E !important;
+}
+
+.site-yellow-text {
+    color: #FF9F1C !important;
+}
+
+.flat-link {
+    color: currentColor;
+    text-decoration: none;
+}
+
+.flat-link:hover {
+    color: currentColor;
+    background-color: white !important;
+    text-decoration: none;
+}
+
+.site-link {
+    color: #454545;
+    text-decoration: none;
+}
+
+.site-link:hover {
+    color: #454545;
+}
+
+.site-link-light {
+    color: #56595c;
+}
+
+.site-link-light:hover {
+    color: #56595c;
+}
+
+.link-decorated {
+    text-decoration: underline !important;
+}
+
+.path-link {
+    padding: 0.25rem 0.5rem;
+    color: currentColor;
+    border-radius: 5px;
+}
+
+.path-link:hover {
+    color: currentColor;
+    text-decoration: none;
+    background-color: rgba(0,0,0,.075);
+}
+
+.logo-font {
+    font-family: 'Lacquer', cursive;
+}
+
+.header-font {
+    font-family: 'Solway', serif;
+}
+
+.site-color {
+    color: #247BA0 !important;
+}
+
+nav .logo-font {
+    font-size: 40px;
+}
+
+.form-control {
+    background-color: white;
+    color: #525252;
+    outline: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border: 1px solid #e0e0e0;
+    color: #525252;
+    outline: none;
+    background-color: white;
+}
+
+.form-text {
+    color: #525252 !important;
+}
+
+.btn {
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.site-btn {
+    background-color: #247BA0;
+    border-color: #247BA0;
+    color: white !important;
+}
+
+.site-btn:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    background-color: #1d6e91;
+    border-color: #1d6e91;
+    color: white;
+}
+
+.site-btn:active {
+    background-color: #2e8fb8 !important;
+    border-color: #2e8fb8 !important;
+    color: white;
+}
+
