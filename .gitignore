@@ -6,3 +6,4 @@ django-app/db.sqlite3
 .vscode/
 .env
 .Trash-1000
+media/
