@@ -18,8 +18,9 @@ class AudioForm(forms.ModelForm):
 
         self.helper.layout = Layout(
             Row(
-                Column(FloatingField('name'), css_class='form-group col-8'),
-                Column(FloatingField('audio'), css_class='form-group col-4'),
+                Column(FloatingField('name'), css_class='form-group col-6'),
+                Column(FloatingField('language'), css_class='form-group col-3'),
+                Column(FloatingField('audio'), css_class='form-group col-3'),
                 css_class='form-row'
             ),
             Row(
@@ -35,12 +36,10 @@ class AudioForm(forms.ModelForm):
         model = Transcription
         fields = (
             'name',
+            'language',
             'audio',
         )
-        labels = {
-            'name': _('Name'),
-            'audio': _('Audio'),
-        }
         widgets = {
+            'language': forms.Select(),
             'audio': forms.ClearableFileInput(attrs={'type': 'file', 'accept': 'audio/*'}),
         }
