@@ -1,4 +1,5 @@
 from django.db import models
+from googletrans import LANGUAGES
 
 
 class Transcription(models.Model):
@@ -7,6 +8,8 @@ class Transcription(models.Model):
     """
     name = models.CharField(max_length=200)
     audio = models.FileField(upload_to='uploads/%Y/%m/%d')
+    language = models.CharField(max_length=8, choices=list(LANGUAGES.items()), default='en')
+
     text = models.TextField()
 
     create_datetime = models.DateTimeField(auto_now_add=True)
