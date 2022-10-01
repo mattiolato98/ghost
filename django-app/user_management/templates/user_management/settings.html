@@ -16,13 +16,38 @@
             </div>
             <div class="row mb-4">
                 <div class="col">
-                    <h2 class="site-color header-font">{% translate "Settings" %}</h2>
+                    <h2 class="site-color header-font mb-0">{% translate "Settings" %}</h2>
                     <span class="text-muted header-font">{% trans "Customize your experience" %}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    Tante cose
+                <div class="col d-flex flex-column">
+                    <a href="#" class="site-blue-text font-6 no-decoration">
+                        <i class="fa-solid fa-earth-europe"></i> {% translate "Language" %}
+                    </a>
+                    <span class="text-muted font-5">
+                        {% blocktranslate %}
+                            Choose the default transcription language
+                        {% endblocktranslate %}
+                    </span>
+                    <hr>
+                    <a href="{% url 'user_management:logout' %}" class="site-red-text font-6 no-decoration">
+                        <i class="fa-solid fa-right-from-bracket"></i> {% translate "Logout" %}
+                    </a>
+                    <span class="text-muted font-5">
+                        {% blocktranslate %}
+                            Logout from the service
+                        {% endblocktranslate %}
+                    </span>
+                    <hr>
+                    <a href="#" class="site-red-text font-6 no-decoration">
+                        <i class="fa-solid fa-circle-minus"></i> {% translate "Delete my account" %}
+                    </a>
+                    <span class="text-muted font-5">
+                        {% blocktranslate %}
+                            Delete your account and all your information
+                        {% endblocktranslate %}
+                    </span>
                 </div>
             </div>
         </div>
