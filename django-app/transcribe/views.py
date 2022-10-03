@@ -15,3 +15,4 @@ class TranscriptionCreateView(CreateView):
 class TranscriptionListView(ListView):
     model = Transcription
     template_name = 'transcribe/transcription_list.html'
+    context_object_name = 'audios'
