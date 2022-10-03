@@ -3,15 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    {{ block.super }} New audio
+    {{ block.super }} {% translate "New audio" %}
 {% endblock %}
 
 {% block content %}
     <div class="row justify-content-center p-4">
-        <div class="site-box p-4 bg-white col-sm-12 col-lg-7 shadow">
+        <div class="site-box p-4 bg-white col-12 col-lg-7 shadow">
             <div class="row mb-3">
                 <div class="col">
-                    <a href="{% url 'transcribe:transcribe' %}" class="font-6 path-link no-decoration">
+                    <a href="{% url 'transcribe:transcription-list' %}" class="font-6 path-link no-decoration">
                         <i class="fas fa-chevron-left mr-2"></i>
                         {% translate "Back" %}
                     </a>
