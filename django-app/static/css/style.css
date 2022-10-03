@@ -196,3 +196,6 @@ nav .logo-font {
     color: white;
 }
 
+.list-group-item {
+    border-radius: 15px;
+}
