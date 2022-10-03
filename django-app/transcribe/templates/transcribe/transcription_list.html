@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load humanize %}
+{% load transcribe_filters %}
 {% load i18n %}
 
 {% block title %}
@@ -6,5 +8,70 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row p-4 gap-2">
+        <div class="d-flex site-box p-4 bg-white col-12 col-lg-3 shadow flex-column">
+            <div class="list-group list-group-flush">
+                {% for audio in audios %}
+                    <a href="{% url 'transcribe:transcription-list' audio.pk %}" class="list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center" aria-current="true">
+                        {% if audio.transcribed %}
+                            <i class="fa-solid fa-check site-green-text"></i>
+                        {% else %}
+                            <div class="spinner-border spinner-border-sm site-blue-text" role="status"></div>
+                        {% endif %}
+                        <div class="text-wrap">
+                            <h6 class="font-6 header-font">{{ audio.name }}</h6>
+                            <p class="mb-0 text-muted header-font">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                                {{ audio.duration|to_datetime|time:"H:i:s" }}
+                            </p>
+                            <p class="mb-0 text-muted header-font">
+                                {{ audio.text_words }} {% translate "words" %}
+                            </p>
+                        </div>
 
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% if audio_object is not None %}
+            <div class="site-box p-4 bg-white col shadow">
+                <div class="row mb-5">
+                    <div class="col-lg-6 col-12">
+                        <h2 class="header-font mb-0">{{ audio_object.name }}</h2>
+                        <h5 class="text-muted">{{ audio_object.get_language_display|title }}</h5>
+                        <div>
+                            {% if audio_object.transcribed %}
+                                <i class="fa-solid fa-check site-green-text mt-1"></i>
+                                <span class="site-green-text font-6 header-font">
+                                    {% translate "Successfully transcribed" %}
+                                </span>
+                            {% else %}
+                                <div class="spinner-border spinner-border-sm site-blue-text mt-1" role="status"></div>
+                                <span class="site-blue-text font-6 header-font">
+                                    {% translate "Processing audio" %}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="d-flex col justify-content-start align-items-mobile-start align-items-end flex-column">
+
+                        <span class="text-muted header-font font-size-90">
+                                {% translate "Created" %}
+                                {{ audio_object.create_datetime|naturalday }}
+                            </span>
+                        <span class="text-muted header-font font-size-90">
+                                {% translate "Last edit" %}
+                                {{ audio_object.last_edit|naturalday }}
+                            </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        {{ audio_object.text }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

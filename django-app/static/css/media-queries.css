@@ -3,4 +3,10 @@
         display: flex;
         justify-content: center !important;
     }
+    .justify-content-mobile-start {
+        justify-content: start !important;
+    }
+    .align-items-mobile-start {
+        align-items: start !important;
+    }
 }
