@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load transcribe_filters %}
 {% load i18n %}
 
 {% block title %}
@@ -6,5 +7,36 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row p-4 gap-2">
+        <div class="d-flex site-box p-4 bg-white col shadow flex-column">
+            <div class="list-group list-group-flush">
+                {% for audio in audios %}
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center" aria-current="true">
+                        {% if audio.transcribed %}
+                            <i class="fa-solid fa-check site-green-text"></i>
+                        {% else %}
+                            <div class="spinner-border spinner-border-sm site-blue-text" role="status"></div>
+                        {% endif %}
+                        <div class="text-wrap">
+                            <h6 class="font-6 header-font">{{ audio.name }}</h6>
+                            <p class="mb-0 text-muted header-font">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                                {{ audio.duration|to_datetime|time:"H:i:s" }}
+                            </p>
+                            <p class="mb-0 text-muted header-font">
+                                {{ audio.text_words }} {% translate "words" %}
+                            </p>
+                            <p class="mb-0 text-muted font-size-80 header-font">
+                                {{ audio.get_language_display|title }}
+                            </p>
+                        </div>
 
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="site-box p-4 bg-white col-12 col-lg-9 shadow">
+
+        </div>
+    </div>
 {% endblock %}
