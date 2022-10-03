@@ -5,4 +5,5 @@ app_name = 'transcribe'
 
 urlpatterns = [
     path('form', views.TranscriptionCreateView.as_view(), name='transcription-form'),
+    path('list', views.TranscriptionListView.as_view(), name='transcription-list'),
 ]
