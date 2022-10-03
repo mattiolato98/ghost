@@ -1,6 +1,6 @@
 from crispy_bootstrap5.bootstrap5 import FloatingField
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Row, Column, Submit
+from crispy_forms.layout import Layout, Row, Column, Submit, Field
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -18,15 +18,15 @@ class AudioForm(forms.ModelForm):
 
         self.helper.layout = Layout(
             Row(
-                Column(FloatingField('name'), css_class='form-group col-6'),
-                Column(FloatingField('language'), css_class='form-group col-3'),
-                Column(FloatingField('audio'), css_class='form-group col-3'),
+                Column(FloatingField('name'), css_class='form-group col-12 col-lg-9'),
+                Column(FloatingField('language'), css_class='form-group col-12 col-lg-3'),
                 css_class='form-row'
             ),
             Row(
+                Column(Field('audio', css_class='form-control-lg'), css_class='form-group col-12 col-lg-9'),
                 Column(
-                    Submit('submit', _('Transcribe'), css_class='btn site-btn w-auto font-5 px-sm-5'),
-                    css_class='d-flex align-items-end justify-content-end mobile-center'
+                    Submit('submit', _('Transcribe'), css_class='btn btn-lg site-btn w-auto font-5 px-sm-5 mt-3'),
+                    css_class='col-12 col-lg-3 d-flex align-items-center justify-content-end mobile-center'
                 ),
                 css_class='form-row'
             ),
