@@ -4,5 +4,5 @@ from transcribe import views
 app_name = 'transcribe'
 
 urlpatterns = [
-    path('', views.TranscriptionCreateView.as_view(), name='transcribe'),
+    path('form', views.TranscriptionCreateView.as_view(), name='transcription-form'),
 ]
