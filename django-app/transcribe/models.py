@@ -24,6 +24,10 @@ class Transcription(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def text_words(self):
+        return len(self.text.split())
+
     def save(self, *args, **kwargs):
         audio_info = mutagen.File(self.audio).info
         self.duration = int(audio_info.length)
