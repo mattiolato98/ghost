@@ -77,7 +77,7 @@ class PrivacyPolicyView(TemplateView):
 
 
 class CookiePolicyView(TemplateView):
-    template_name = "user_management/cookie-policy.html"
+    template_name = "user_management/cookie_policy.html"
 
 
 def ajax_check_username_exists(request):
