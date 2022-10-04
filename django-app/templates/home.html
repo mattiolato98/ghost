@@ -12,4 +12,13 @@
     <a class="btn btn-info" href="{% url 'transcribe:transcription-form' %}">
         Transcribe
     </a>
+    <a class="btn btn-info" href="{% url 'user_management:registration' %}">
+        Sign in
+    </a>
+    <a class="btn btn-info" href="{% url 'user_management:login' %}">
+        Log in
+    </a>
+    <a class="btn btn-info" href="{% url 'user_management:logout' %}">
+        Log out
+    </a>
 {% endblock %}
