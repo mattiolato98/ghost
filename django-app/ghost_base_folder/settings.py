@@ -32,6 +32,9 @@ SECRET_KEY = get_random_secret_key()
 DEBUG = bool(int(os.environ.get('DEBUG', '0')))
 
 ALLOWED_HOSTS = []
+ALLOWED_HOSTS.extend(filter(None, os.environ.get('GHOST_ALLOWED_HOSTS', '').split(',')))
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 
 # Application definition
