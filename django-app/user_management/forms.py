@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -58,3 +58,13 @@ class PlatformUserCreationForm(UserCreationForm):
             'password2',
             'privacy_and_cookie_policy_acceptance',
         )
+
+
+class LoginForm(AuthenticationForm):
+    helper = FormHelper()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
+        self.fields['password'].widget.attrs.update({'placeholder': 'Password'})

@@ -19,6 +19,12 @@ account_activation_token = PasswordResetTokenGenerator()
 
 
 @method_decorator(not_authenticated_only, name='dispatch')
+class LoginUserView(LoginView):
+    form_class = LoginForm
+    template_name = 'registration/login.html'
+
+
+@method_decorator(not_authenticated_only, name='dispatch')
 class RegistrationView(CreateView):
     form_class = PlatformUserCreationForm
     template_name = 'registration/registration.html'
