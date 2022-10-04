@@ -207,3 +207,8 @@ nav .logo-font {
 .font-size-80 {
     font-size: 80% !important;
 }
+
+.picture-small-fixed {
+    height: 40px;
+    width: 40px;
+}

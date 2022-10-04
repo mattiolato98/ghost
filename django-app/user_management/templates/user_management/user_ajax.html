@@ -1,0 +1,34 @@
+{% load i18n %}
+
+<script type="text/javascript">
+    $('#id_username').on('change', function () {
+        /**
+         * Check if a username already exist.
+         */
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'user_management:ajax-check-username-exists' %}",
+            data: {
+                'username': $(this).val(),
+            },
+            dataType: 'json',
+            success: function(data) {
+                let username_field = $('#id_username');
+
+                if (data.exists) {
+                    username_field.css('border-color', "#dc3545");
+                    if (!$('#username-exists-error').length) {
+                        username_field.after(
+                            '<span id="username-exists-error" class="text-danger font-7 font-size-80">' +
+                            '{% translate "Someone stole this username. Damn!." %}' +
+                            '</span>'
+                        );
+                    }
+                } else {
+                    username_field.css('border-color', "#e8e8e8");
+                    $('#username-exists-error').remove();
+                }
+            }
+        });
+    });
+</script>
