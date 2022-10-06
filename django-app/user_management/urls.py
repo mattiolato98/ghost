@@ -17,4 +17,5 @@ urlpatterns = [
     path('privacy-policy', views.PrivacyPolicyView.as_view(), name='privacy-policy'),
     path('cookie-policy', views.CookiePolicyView.as_view(), name='cookie-policy'),
     path('ajax-check-username-exists', views.ajax_check_username_exists, name='ajax-check-username-exists'),
+    path('ajax-check-username-is-correct', views.ajax_check_username_is_correct, name='ajax-check-username-is-correct'),
 ]

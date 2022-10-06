@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth.views import LoginView
@@ -9,6 +10,8 @@ from django.utils.decorators import method_decorator
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.http import require_GET
 from django.views.generic import TemplateView, CreateView, DeleteView
 
 from user_management.decorators import not_authenticated_only
@@ -133,3 +136,15 @@ def verify_user_email(request, user_id_b64=None, user_token=None):
         return redirect('user_management:registration')
 
     return redirect('user_management:email-verified')
+
+
+@login_required
+@require_GET
+@csrf_protect
+def ajax_check_username_is_correct(request):
+    """Check if the username given by a user is correct in order to
+    make them able to delete their account."""
+
+    if request.GET.get('username') == request.user.username:
+        return JsonResponse({'is_correct': True})
+    return JsonResponse({'is_correct': False})
