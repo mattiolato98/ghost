@@ -10,7 +10,7 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
     model = Transcription
     form_class = AudioForm
     template_name = 'transcribe/transcription_form.html'
-    success_url = reverse_lazy('transcribe:transcription-form')
+    success_url = reverse_lazy('transcribe:transcription-list')
 
 
 class TranscriptionListView(LoginRequiredMixin, ListView):
