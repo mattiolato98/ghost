@@ -107,6 +107,7 @@ h5 {
 
 .site-link:hover {
     color: #454545;
+    text-decoration: underline;
 }
 
 .site-link-light {
