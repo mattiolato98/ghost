@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth.views import LoginView
 from django.http import JsonResponse
@@ -8,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DeleteView
 
 from user_management.decorators import not_authenticated_only
 from user_management.forms import LoginForm, PlatformUserCreationForm
@@ -58,6 +59,16 @@ class RegistrationView(CreateView):
         self.object.save()
 
         return response
+
+
+class UserDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = "user_management/user_delete.html"
+    success_url = reverse_lazy("home")
+    model = get_user_model()
+
+    def get_object(self, queryset=None):
+        """Avoid passing users' primary keys in the URL"""
+        return self.request.user
 
 
 class EmailVerificationNeededView(TemplateView):
