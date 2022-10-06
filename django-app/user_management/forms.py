@@ -1,3 +1,4 @@
+from crispy_bootstrap5.bootstrap5 import FloatingField
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column
 from django import forms
@@ -17,11 +18,6 @@ class PlatformUserCreationForm(UserCreationForm):
 
         self.fields['password1'].help_text = None
 
-        self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
-        self.fields['email'].widget.attrs.update({'placeholder': _('Your email')})
-        self.fields['password1'].widget.attrs.update({'placeholder': 'Password'})
-        self.fields['password2'].widget.attrs.update({'placeholder': _('Confirm password')})
-
         privacy_policy_url = reverse_lazy('user_management:privacy-policy')
         cookie_policy_url = reverse_lazy('user_management:cookie-policy')
 
@@ -34,13 +30,13 @@ class PlatformUserCreationForm(UserCreationForm):
 
         self.helper.layout = Layout(
             Row(
-                Column('username', css_class='form-group mb-0'),
-                Column('email', css_class='form-group mb-0'),
+                Column(FloatingField('username'), css_class='form-group mb-0'),
+                Column(FloatingField('email'), css_class='form-group mb-0'),
                 css_class='form-row'
             ),
             Row(
-                Column('password1', css_class='form-group'),
-                Column('password2', css_class='form-group'),
+                Column(FloatingField('password1'), css_class='form-group'),
+                Column(FloatingField('password2'), css_class='form-group'),
                 css_class='form-row',
             ),
             Row(
@@ -66,5 +62,13 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
-        self.fields['password'].widget.attrs.update({'placeholder': 'Password'})
+        self.helper.layout = Layout(
+            Row(
+                Column(FloatingField('username'), css_class='form-group mb-0'),
+                css_class='form-row'
+            ),
+            Row(
+                Column(FloatingField('password'), css_class='form-group mb-0'),
+                css_class='form-row'
+            )
+        )
