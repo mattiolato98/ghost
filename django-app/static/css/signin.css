@@ -4,12 +4,8 @@ html,body {
 }
 
 #site-main-page {
-    margin: 0 !important;
+    margin-top: 0 !important;
     padding: 0 !important;
-}
-
-.navbar-header-background {
-    height: 0;
 }
 
 #background-column {
@@ -18,22 +14,6 @@ html,body {
     height: inherit;
     background: white;
     background-size: cover;
-}
-
-#signing-box {
-    max-width: 650px;
-    background-color: transparent;
-    color: #525252;
-}
-
-.site-link {
-    color: #525252 !important;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.site-link:hover {
-    color: #525252;
 }
 
 input:-webkit-autofill,

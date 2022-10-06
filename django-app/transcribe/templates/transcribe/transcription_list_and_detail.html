@@ -8,6 +8,13 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row px-4">
+        <div class="col d-flex justify-content-end">
+            <a class="btn site-btn" href="{% url 'transcribe:transcription-form' %}">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+    </div>
     <div class="row p-4 gap-2">
         <div class="d-flex site-box p-4 bg-white col-12 col-lg-3 shadow flex-column">
             <div class="list-group list-group-flush">
