@@ -28,7 +28,7 @@ RUN mkdir $APP_HOME
 
 WORKDIR $APP_HOME
 
-RUN apk update && apk add libpq
+RUN apk update && apk add libpq ffmpeg
 COPY --from=builder /usr/src/app/wheels /wheels
 RUN pip install --no-cache /wheels/*
 
