@@ -15,7 +15,7 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
 
 class TranscriptionListView(LoginRequiredMixin, ListView):
     model = Transcription
-    template_name = 'transcribe/transcription_list.html'
+    template_name = 'transcribe/transcription_list_and_detail.html'
     context_object_name = 'audios'
     object = None
 
