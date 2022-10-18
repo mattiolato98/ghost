@@ -1,0 +1,45 @@
+{% load humanize %}
+{% load i18n %}
+
+<div class="site-box p-4 bg-white col shadow">
+    <div class="row mb-5">
+        <div class="col-lg-6 col-12">
+            <h2 class="header-font mb-0">{{ audio_object.name }}</h2>
+            <h5 class="text-muted">{{ audio_object.get_language_display|title }}</h5>
+            <div>
+                {% if audio_object.transcribed %}
+                    <i class="fa-solid fa-check site-green-text mt-1"></i>
+                    <span class="site-green-text font-6 header-font">
+                        {% translate "Successfully transcribed" %}
+                    </span>
+                {% else %}
+                    <div class="spinner-border spinner-border-sm site-blue-text mt-1" role="status"></div>
+                    <span class="site-blue-text font-6 header-font">
+                        {% translate "Processing audio" %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="d-flex col justify-content-start align-items-mobile-start align-items-end flex-column">
+            <span class="text-muted header-font font-size-90">
+                {% translate "Created" %}
+                {{ audio_object.create_datetime|naturalday }}
+            </span>
+            <span class="text-muted header-font font-size-90">
+                {% translate "Last edit" %}
+                {{ audio_object.last_edit|naturalday }}
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ audio_object.audio.name }}
+            <audio controls>
+                <source src="{{ audio_object.audio.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            {{ audio_object.text }}
+        </div>
+    </div>
+</div>

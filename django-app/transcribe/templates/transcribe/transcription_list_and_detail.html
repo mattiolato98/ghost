@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {{ block.super }} {% translate "Audio" %}
+{% endblock %}
+
+{% block content %}
+    <div class="row px-4">
+        <div class="col d-flex justify-content-end p-0">
+            <a class="btn site-btn" href="{% url 'transcribe:transcription-form' %}">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row p-4 gap-2">
+        {% if audio_object is not None %}
+            {% if request.user_agent.is_mobile %}
+                {% include 'transcribe/transcription_detail.html' %}
+            {% else %}
+                {% include 'transcribe/transcription_list.html' %}
+                {% include 'transcribe/transcription_detail.html' %}
+            {% endif %}
+        {% else %}
+            {% include 'transcribe/transcription_list.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

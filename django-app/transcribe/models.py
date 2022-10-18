@@ -1,8 +1,10 @@
-import datetime
+import fleep
 import mutagen
+import os
 
 from django.db import models
 from googletrans import LANGUAGES
+from ghost_base_folder.settings import MEDIA_ROOT
 
 
 class Transcription(models.Model):
@@ -29,10 +31,29 @@ class Transcription(models.Model):
         return len(self.text.split())
 
     def save(self, *args, **kwargs):
+        """
+        - Saves the audio duration in the model field
+        - If the audio format is not mp3 already, converts it to mp3
+        """
         audio_info = mutagen.File(self.audio).info
         self.duration = int(audio_info.length)
 
         super(Transcription, self).save(*args, **kwargs)
+
+        audio_filename, audio_extension = os.path.basename(self.audio.name).rsplit('.', 1)
+        old_audio = f'{MEDIA_ROOT}/{self.audio.name}'
+
+        with open(old_audio, 'rb') as file:
+            info = fleep.get(file.read(128))
+
+        audio_format = info.extension[0]
+
+        if audio_format != 'mp3':
+            new_audio_filename = f'{audio_filename}.mp3'
+            new_audio = f'{MEDIA_ROOT}/{os.path.dirname(self.audio.name)}/{new_audio_filename}'
+
+            os.system(f'ffmpeg -i {old_audio} -vn -ar 44100 -ac 2 -b:a 192k {new_audio}')
+            os.system(f'rm {old_audio}')
 
     class Meta:
         ordering = ['-last_edit', '-create_datetime']
