@@ -21,6 +21,11 @@ from ghost_base_folder.email_settings import *
 REDIS_HOST = os.environ.get('GHOST_REDIS_HOSTNAME="ghost-app-redis"')
 REDIS_URL = ''.join(['redis://', REDIS_HOST, ':6379/0'])
 
+CELERY_TIMEZONE = "Europe/Rome"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_BROKER_URL = REDIS_URL
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
