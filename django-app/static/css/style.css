@@ -197,6 +197,25 @@ nav .logo-font {
     color: white;
 }
 
+.site-btn-red {
+    background-color: #FF6B6C;
+    border-color: #FF6B6C;
+    color: white !important;
+}
+
+.site-btn-red:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    background-color: #E55153FF;
+    border-color: #E55153FF;
+    color: white;
+}
+
+.site-btn-red:active {
+    background-color: #FF7F80FF !important;
+    border-color: #FF7F80FF !important;
+    color: white;
+}
+
 .list-group-item {
     border-radius: 15px;
 }
