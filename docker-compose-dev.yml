@@ -27,6 +27,20 @@ services:
             - "8000:8000"
         depends_on:
             - app-db
+    app-celery:
+        image: ghost-app-celery-dev
+        container_name: ghost-app-celery-dev
+        build:
+            context: .
+            dockerfile: celery.Dockerfile
+        env_file:
+            - .dev.env
+        volumes:
+            - ./django-app:${GHOST_APP_HOME}
+        depends_on:
+            - app-web
+            - app-db
+            - app-redis
 
 volumes:
     app-data:
