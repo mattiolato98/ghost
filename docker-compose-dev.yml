@@ -1,4 +1,9 @@
 services:
+    app-redis:
+        image: redis:alpine
+        container_name: ${GHOST_REDIS_HOSTNAME}
+        ports:
+            - "6379:6379"
     app-db:
         image: postgres:alpine
         container_name: ${POSTGRES_HOSTNAME}

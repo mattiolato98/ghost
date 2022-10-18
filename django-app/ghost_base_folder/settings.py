@@ -17,6 +17,10 @@ from django.core.management.utils import get_random_secret_key
 
 from ghost_base_folder.email_settings import *
 
+# Celery configuration variables
+REDIS_HOST = os.environ.get('GHOST_REDIS_HOSTNAME="ghost-app-redis"')
+REDIS_URL = ''.join(['redis://', REDIS_HOST, ':6379/0'])
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
