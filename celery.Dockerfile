@@ -42,4 +42,4 @@ RUN mkdir -p $HOME/vol/static && \
 
 USER app
 
-CMD ["celery", "-A", "load_balancer_ws", "worker", "-l", "info"]
+CMD ["celery", "-A", "ghost_base_folder", "worker", "-l", "info"]
