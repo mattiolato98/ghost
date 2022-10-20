@@ -8,9 +8,7 @@ from ghost_base_folder.settings import MEDIA_ROOT
 
 
 class Transcription(models.Model):
-    """
-    Model that describe an audio file.
-    """
+    """Model that represents an audio file and its transcription."""
     name = models.CharField(max_length=200)
     audio = models.FileField(upload_to='uploads/%Y/%m/%d')
     language = models.CharField(max_length=8, choices=list(LANGUAGES.items()), default='en')
@@ -31,9 +29,8 @@ class Transcription(models.Model):
         return len(self.text.split())
 
     def save(self, *args, **kwargs):
-        """
-        - Saves the audio duration in the model field
-        - If the audio format is not mp3 already, converts it to mp3
+        """Saves the audio duration in the model field before saving
+        effectively the object.
         """
         audio_info = mutagen.File(self.audio).info
         self.duration = int(audio_info.length)
