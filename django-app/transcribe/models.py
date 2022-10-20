@@ -1,10 +1,13 @@
-import fleep
-import mutagen
 import os
+from pathlib import Path
 
-from django.db import models
+import mutagen
 from googletrans import LANGUAGES
+from django.core.files import File
+from django.db import models
+
 from ghost_base_folder.settings import MEDIA_ROOT
+import utils.audio_utils as audio_utils
 
 
 class Transcription(models.Model):
@@ -24,10 +27,6 @@ class Transcription(models.Model):
     def __str__(self):
         return self.name
 
-    @property
-    def text_words(self):
-        return len(self.text.split())
-
     def save(self, *args, **kwargs):
         """Saves the audio duration in the model field before saving
         effectively the object.
@@ -37,20 +36,58 @@ class Transcription(models.Model):
 
         super(Transcription, self).save(*args, **kwargs)
 
+    @property
+    def text_words(self):
+        """Returns the number of words in a text."""
+        return len(self.text.split())
+
+    @property
+    def audio_path(self):
+        """Returns the path of the transcription's audio."""
+        return f'{MEDIA_ROOT}/{self.audio.name}'
+
+    @property
+    def audio_directory(self):
+        """Returns the directory that contains the transcription's
+        audio.
+        """
+        return os.path.dirname(self.audio.name)
+
+    def create_audio_path(self, filename):
+        """Creates an os path for a new transcription's audio."""
+        return f'{MEDIA_ROOT}/{self.audio_directory}/{filename}'
+
+    def update_audio_object(self, audio_path):
+        """Updates the file object representing the transcription's
+        audio, then the original file is removed since Django
+        duplicates it.
+        """
+        new_path = Path(audio_path)
+        with new_path.open(mode='rb') as f:
+            self.audio = File(f, name=new_path.name)
+            self.save()
+        # removing the original copy of the file (duplicated by Django)
+        audio_utils.remove_audio(audio_path)
+
+    def convert_audio_to_mp3(self):
+        """Asynchronous function that converts an uploaded audio file
+        to the standard mp3 format
+        """
         audio_filename, audio_extension = os.path.basename(self.audio.name).rsplit('.', 1)
-        old_audio = f'{MEDIA_ROOT}/{self.audio.name}'
+        old_audio_path = self.audio_path
 
-        with open(old_audio, 'rb') as file:
-            info = fleep.get(file.read(128))
+        if audio_utils.get_audio_format(self.audio_path) == 'mp3':
+            return
 
-        audio_format = info.extension[0]
+        new_audio_filename = f'{audio_filename}.mp3'
+        new_audio_path = self.create_audio_path(new_audio_filename)
 
-        if audio_format != 'mp3':
-            new_audio_filename = f'{audio_filename}.mp3'
-            new_audio = f'{MEDIA_ROOT}/{os.path.dirname(self.audio.name)}/{new_audio_filename}'
-
-            os.system(f'ffmpeg -i {old_audio} -vn -ar 44100 -ac 2 -b:a 192k {new_audio}')
-            os.system(f'rm {old_audio}')
+        print(f'Converting asynchronously {old_audio_path} into {new_audio_path}')
+        audio_utils.ffmpeg_conversion(old_audio_path, new_audio_path)
+        # removing the old audio file
+        audio_utils.remove_audio(old_audio_path)
+        # saving the new file in the audio FileField
+        self.update_audio_object(new_audio_path)
 
     class Meta:
         ordering = ['-last_edit', '-create_datetime']
