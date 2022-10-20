@@ -18,7 +18,7 @@ from django.core.management.utils import get_random_secret_key
 from ghost_base_folder.email_settings import *
 
 # Celery configuration variables
-REDIS_HOST = os.environ.get('GHOST_REDIS_HOSTNAME="ghost-app-redis"')
+REDIS_HOST = os.environ.get('GHOST_REDIS_HOSTNAME')
 REDIS_URL = ''.join(['redis://', REDIS_HOST, ':6379/0'])
 
 CELERY_TIMEZONE = "Europe/Rome"
