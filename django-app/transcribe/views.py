@@ -1,11 +1,16 @@
 import celery
+import fleep
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, ListView
 
 from transcribe.forms import AudioForm
 from transcribe.models import Transcription
+
+from utils import audio_utils
 
 
 class TranscriptionCreateView(LoginRequiredMixin, CreateView):
@@ -15,6 +20,18 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('transcribe:transcription-list')
 
     def form_valid(self, form):
+        def not_audio_raise_error():
+            not_audio_file_error_msg = _('Only audio file supported. Please try again with an audio file.')
+            form.add_error("audio", error=not_audio_file_error_msg)
+            return self.form_invalid(form)
+
+        try:
+            with open(form.cleaned_data['audio'].temporary_file_path(), 'rb') as file:
+                if not audio_utils.is_audio(file):
+                    return not_audio_raise_error()
+        except AttributeError:
+            return not_audio_raise_error()
+
         self.object = form.save()
 
         celery.current_app.send_task(
