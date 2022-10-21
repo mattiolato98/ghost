@@ -18,3 +18,11 @@ def ffmpeg_conversion(old_audio_path, new_audio_path):
 
 def remove_audio(audio_path):
     os.system(f'rm {audio_path}')
+
+
+def is_audio(file):
+    info = fleep.get(file.read(128))
+    if 'audio' not in info.type:
+        return False
+
+    return True
