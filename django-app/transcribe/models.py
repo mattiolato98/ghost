@@ -53,6 +53,14 @@ class Transcription(models.Model):
         """
         return os.path.dirname(self.audio.name)
 
+    @property
+    def audio_filename(self):
+        """Return the audio filename without extension, if present."""
+        if '.' in os.path.basename(self.audio.name):
+            return os.path.basename(self.audio.name).rsplit('.', 1)[0]
+
+        return os.path.basename(self.audio.name)
+
     def create_audio_path(self, filename):
         """Creates an os path for a new transcription's audio."""
         return f'{MEDIA_ROOT}/{self.audio_directory}/{filename}'
@@ -73,13 +81,12 @@ class Transcription(models.Model):
         """Asynchronous function that converts an uploaded audio file
         to the standard mp3 format
         """
-        audio_filename, audio_extension = os.path.basename(self.audio.name).rsplit('.', 1)
         old_audio_path = self.audio_path
 
         if audio_utils.get_audio_format(self.audio_path) == 'mp3':
             return
 
-        new_audio_filename = f'{audio_filename}.mp3'
+        new_audio_filename = f'{self.audio_filename}.mp3'
         new_audio_path = self.create_audio_path(new_audio_filename)
 
         print(f'Converting asynchronously {old_audio_path} into {new_audio_path}')
