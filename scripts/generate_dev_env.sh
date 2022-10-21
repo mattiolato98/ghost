@@ -17,4 +17,5 @@ POSTGRES_PASSWORD="mysecretpassword"
 POSTGRES_PORT=5432
 POSTGRES_HOSTNAME="ghost-app-db"
 PGDATA=/var/lib/postgresql/data
+GHOST_REDIS_HOSTNAME="ghost-app-redis"
 EOF
