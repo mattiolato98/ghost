@@ -82,7 +82,7 @@ class EmailVerifiedView(TemplateView):
     template_name = 'user_management/email_verified.html'
 
 
-class SettingsTemplateView(TemplateView):
+class SettingsTemplateView(LoginRequiredMixin, TemplateView):
     template_name = 'user_management/settings.html'
 
 
