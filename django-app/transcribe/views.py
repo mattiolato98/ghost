@@ -55,6 +55,9 @@ class TranscriptionListView(LoginRequiredMixin, ListView):
         pk = self.kwargs.get('pk', None)
         return Transcription.objects.get(pk=pk) if pk is not None else None
 
+    def get_queryset(self):
+        return Transcription.objects.filter(user=self.request.user)
+
     def get_context_data(self, **kwargs):
         context = super(TranscriptionListView, self).get_context_data(**kwargs)
         context['transcription_object'] = self.object
