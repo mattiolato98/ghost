@@ -24,6 +24,7 @@ class Transcription(models.Model):
     last_edit = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='transcriptions')
 
+    is_mp3 = models.BooleanField(default=False)
     transcribed = models.BooleanField(default=False)
 
     def __str__(self):

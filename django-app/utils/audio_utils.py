@@ -3,10 +3,10 @@ import os
 import fleep
 
 
-def get_audio_format(audio_path):
+def audio_info(audio_path):
     with open(audio_path, 'rb') as file:
         info = fleep.get(file.read(128))
-        return info.extension[0]
+        return is_audio(info), info.extension[0]
 
 
 def ffmpeg_conversion(old_audio_path, new_audio_path):
@@ -20,8 +20,7 @@ def remove_audio(audio_path):
     os.system(f'rm {audio_path}')
 
 
-def is_audio(file):
-    info = fleep.get(file.read(128))
+def is_audio(info):
     if 'audio' not in info.type:
         return False
 

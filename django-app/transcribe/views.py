@@ -25,14 +25,15 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
         try:
-            with open(form.cleaned_data['audio'].temporary_file_path(), 'rb') as file:
-                if not audio_utils.is_audio(file):
-                    return not_audio_raise_error()
+            is_audio, audio_format = audio_utils.audio_info(form.cleaned_data['audio'].temporary_file_path())
+            if not is_audio:
+                return not_audio_raise_error()
         except AttributeError:
             return not_audio_raise_error()
 
         # assigning current user to the object
         form.instance.user = self.request.user
+        form.instance.is_mp3 = True if audio_format == 'mp3' else False
 
         self.object = form.save()
 
