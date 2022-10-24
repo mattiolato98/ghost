@@ -86,9 +86,6 @@ class Transcription(models.Model):
         """
         old_audio_path = self.audio_path
 
-        if audio_utils.get_audio_format(self.audio_path) == 'mp3':
-            return
-
         new_audio_filename = f'{self.audio_filename}.mp3'
         new_audio_path = self.create_audio_path(new_audio_filename)
 
