@@ -81,7 +81,7 @@ class Transcription(models.Model):
 
     def convert_audio_to_mp3(self):
         """Asynchronous function that converts an uploaded audio file
-        to the standard mp3 format
+        to the standard mp3 format.
         """
         old_audio_path = self.audio_path
 
