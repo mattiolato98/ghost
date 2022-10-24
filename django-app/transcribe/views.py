@@ -57,5 +57,5 @@ class TranscriptionListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(TranscriptionListView, self).get_context_data(**kwargs)
-        context['audio_object'] = self.object
+        context['transcription_object'] = self.object
         return context
