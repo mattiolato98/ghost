@@ -52,8 +52,12 @@
                 </div>
             {% else %}
                 {% include 'transcribe/transcription_list.html' %}
-                <div class="col d-flex justify-content-center align-items-center">
-                    <p class="text-muted font-6">Select a transcription to start</p>
+                <div class="col d-flex justify-content-center align-items-center mt-4 flex-column">
+                    <p class="d-flex flex-column mb-0">
+                        <span class="font-7">{% translate 'Select' %}</span>
+                        <span class="font-7 font-size-150">{% translate 'a transcription' %}</span>
+                        <span class="font-5 text-muted">{% translate 'or create a new one' %}</span>
+                    </p>
                 </div>
             {% endif %}
         {% endif %}
