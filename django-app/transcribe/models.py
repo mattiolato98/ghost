@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 import mutagen
+from django.contrib.auth import get_user_model
 from googletrans import LANGUAGES
 from django.core.files import File
 from django.db import models
@@ -21,6 +22,7 @@ class Transcription(models.Model):
 
     create_datetime = models.DateTimeField(auto_now_add=True)
     last_edit = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='transcriptions')
 
     transcribed = models.BooleanField(default=False)
 
