@@ -1,5 +1,4 @@
 import celery
-import fleep
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
