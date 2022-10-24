@@ -27,7 +27,7 @@ class Transcription(models.Model):
     transcribed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} of {self.user.username}'
 
     def save(self, *args, **kwargs):
         """Saves the audio duration in the model field before saving
