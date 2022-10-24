@@ -31,6 +31,9 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
         except AttributeError:
             return not_audio_raise_error()
 
+        # assigning current user to the object
+        form.instance.user = self.request.user
+
         self.object = form.save()
 
         celery.current_app.send_task(
