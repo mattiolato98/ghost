@@ -4,6 +4,7 @@ from crispy_forms.layout import Layout, Row, Column
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -44,6 +45,12 @@ class PlatformUserCreationForm(UserCreationForm):
                 css_class='form-row'
             ),
         )
+
+    def clean(self):
+        if not self.cleaned_data['privacy_and_cookie_policy_acceptance']:
+            raise ValidationError(_("You must accept the privacy policies."))
+
+        return super(PlatformUserCreationForm, self).clean()
 
     class Meta:
         model = get_user_model()
