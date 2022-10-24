@@ -3,25 +3,27 @@
 
 <div class="d-flex site-box p-4 bg-white col-12 col-lg-3 shadow flex-column">
     <div class="list-group list-group-flush">
-        {% for audio in audios %}
-            <a href="{% url 'transcribe:transcription-list' audio.pk %}" class="list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center" aria-current="true">
-                {% if audio.transcribed %}
+        {% for transcription in transcriptions %}
+            <a href="{% url 'transcribe:transcription-list' transcription.pk %}" class="list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center" aria-current="true">
+                {% if transcription.transcribed %}
                     <i class="fa-solid fa-check site-green-text"></i>
                 {% else %}
                     <i class="fa-solid fa-spinner site-yellow-text"></i>
                 {% endif %}
                 <div class="text-wrap">
-                    <h6 class="font-6 header-font">{{ audio.name }}</h6>
+                    <h6 class="font-6 header-font">{{ transcription.name }}</h6>
                     <p class="mb-0 text-muted header-font">
                         <i class="fa-solid fa-microphone-lines"></i>
-                        {{ audio.duration|to_datetime|time:"H:i:s" }}
+                        {{ transcription.duration|to_datetime|time:"H:i:s" }}
                     </p>
                     <p class="mb-0 text-muted header-font">
-                        {{ audio.text_words }} {% translate "words" %}
+                        {{ transcription.text_words }} {% translate "words" %}
                     </p>
                 </div>
 
             </a>
+        {% empty %}
+            <p>{% translate 'No transcription available' %}</p>
         {% endfor %}
     </div>
 </div>

@@ -44,7 +44,7 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
 class TranscriptionListView(LoginRequiredMixin, ListView):
     model = Transcription
     template_name = 'transcribe/transcription_list_and_detail.html'
-    context_object_name = 'audios'
+    context_object_name = 'transcriptions'
     object = None
 
     def get(self, request, *args, **kwargs):
