@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% block extra_css %}
+    <style>
+        hr {
+            border-style: solid;
+            width: 350px;
+            height: 5px !important;
+            opacity: 100%;
+        }
+    </style>
+{% endblock %}
+
 {% block title %}
     {{ block.super }} {% translate "Audio" %}
 {% endblock %}
 
 {% block content %}
-    <div class="row px-4">
-        <div class="col d-flex justify-content-end p-0">
-            <a class="btn site-btn" href="{% url 'transcribe:transcription-form' %}">
-                <i class="fa-solid fa-plus"></i>
-            </a>
+    {% if transcriptions|length_is:0 %}
+    {% else %}
+        <div class="row px-4">
+            <div class="col d-flex justify-content-end p-0">
+                <a class="btn site-btn" href="{% url 'transcribe:transcription-form' %}">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
         </div>
-    </div>
+    {% endif %}
     <div class="row p-4 gap-2">
         {% if transcription_object is not None %}
             {% if request.user_agent.is_mobile %}
@@ -22,7 +36,26 @@
                 {% include 'transcribe/transcription_detail.html' %}
             {% endif %}
         {% else %}
-            {% include 'transcribe/transcription_list.html' %}
+            {% if transcriptions|length_is:0 %}
+                <div class="col d-flex justify-content-center text-center align-items-center flex-column">
+                    <p class="d-flex flex-column mb-0">
+                        <span class="font-5 display-4">{% translate 'No' %}</span>
+                        <span class="display-3 font-7">{% translate 'transcription' %}</span>
+                    </p>
+                    <hr class="site-red-text mb-2 mt-0">
+                    <p>
+                        <span class="font-5 font-size-150">{% translate 'available' %}</span>
+                    </p>
+                    <a href="{% url 'transcribe:transcription-form' %}" class="site-blue-text font-7 font-size-110 mt-5">
+                        {% translate 'Create your first transcription' %} >
+                    </a>
+                </div>
+            {% else %}
+                {% include 'transcribe/transcription_list.html' %}
+                <div class="col d-flex justify-content-center align-items-center">
+                    <p class="text-muted font-6">Select a transcription to start</p>
+                </div>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
