@@ -220,6 +220,18 @@ nav .logo-font {
     border-radius: 15px;
 }
 
+.font-size-150 {
+    font-size: 150% !important;
+}
+
+.font-size-120 {
+    font-size: 120% !important;
+}
+
+.font-size-110 {
+    font-size: 110% !important;
+}
+
 .font-size-90 {
     font-size: 90% !important;
 }
@@ -231,4 +243,9 @@ nav .logo-font {
 .picture-small-fixed {
     height: 40px;
     width: 40px;
+}
+
+hr {
+    border-style: solid;
+    width: 100%;
 }
