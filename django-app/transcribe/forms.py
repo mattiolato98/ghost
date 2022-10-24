@@ -23,12 +23,16 @@ class AudioForm(forms.ModelForm):
                 css_class='form-row'
             ),
             Row(
-                Column(Field('audio', css_class='form-control-lg'), css_class='form-group col-12 col-lg-9'),
+                Column(Field('audio', css_class='form-control-lg'), css_class='form-group col'),
                 Column(
-                    Submit('submit', _('Transcribe'), css_class='btn btn-lg site-btn w-auto font-5 px-sm-5 mt-3'),
+                    Submit(
+                        'submit',
+                        _('Transcribe'),
+                        css_class='btn btn-lg site-btn w-auto font-5 px-5 px-lg-3 px-xxl-5 mt-3'
+                    ),
                     css_class='col-12 col-lg-3 d-flex align-items-center justify-content-end mobile-center'
                 ),
-                css_class='form-row'
+                css_class='form-row gap-3'
             ),
         )
 
