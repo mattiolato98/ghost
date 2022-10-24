@@ -22,11 +22,6 @@
                 </div>
 
             </a>
-        {% empty %}
-            <p class="text-muted">{% translate 'No transcription available' %}</p>
-            <a href="{% url 'transcribe:transcription-form' %}" class="site-blue-text font-6">
-                {% translate 'Create your first transcription' %} >
-            </a>
         {% endfor %}
     </div>
 </div>
