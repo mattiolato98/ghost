@@ -20,7 +20,12 @@
     {% if transcriptions|length_is:0 %}
     {% else %}
         <div class="row px-4">
-            <div class="col d-flex justify-content-end p-0">
+            <div class="col d-flex justify-content-end p-0 gap-3">
+                {% if user.is_manager %}
+                    <a class="btn site-btn-red" href="#">
+                        <i class="fa-solid fa-chess-king"></i>
+                    </a>
+                {% endif %}
                 <a class="btn site-btn" href="{% url 'transcribe:transcription-form' %}">
                     <i class="fa-solid fa-plus"></i>
                 </a>
