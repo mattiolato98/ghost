@@ -37,10 +37,12 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
 
         self.object = form.save()
 
-        celery.current_app.send_task(
-            'transcribe.tasks.async_audio_conversion',
-            args=(self.object.pk,),
-        )
+        if not form.instance.is_mp3:
+            celery.current_app.send_task(
+                'transcribe.tasks.async_audio_conversion',
+                args=(self.object.pk,),
+            )
+
         return HttpResponseRedirect(self.get_success_url())
 
 
