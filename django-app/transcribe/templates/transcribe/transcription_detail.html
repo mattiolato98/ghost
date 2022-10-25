@@ -58,6 +58,11 @@
                     {% endblocktranslate %}
                 </p>
             {% endif %}
+            <p>
+                {% if transcription_object.text is not None %}
+                    {{ transcription_object.text }}
+                {% endif %}
+            </p>
         </div>
     </div>
 </div>
