@@ -29,18 +29,18 @@
                 {% translate "Last edit" %}
                 {{ transcription_object.last_edit|naturalday }}
             </span>
-        </div>
-        <div class="d-flex col-auto justify-content-start py-2">
-            <i class="fa-solid fa-ellipsis cursor-pointer" data-toggle="dropdown"></i>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                <a class="dropdown-item cursor-pointer"
-                   href="#">
-                    test
-                </a>
+            <div class="mt-4">
+                <i class="fa-solid fa-ellipsis cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                    <a class="dropdown-item dropdown-item-red cursor-pointer font-6"
+                       href="#">
+                        <i class="fa-solid fa-trash"></i>
+                        {% translate 'Delete' %}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col">
             {% if transcription_object.is_mp3 %}
