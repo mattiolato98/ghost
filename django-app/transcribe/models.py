@@ -18,7 +18,7 @@ class Transcription(models.Model):
     language = models.CharField(max_length=8, choices=list(LANGUAGES.items()), default='en')
     duration = models.PositiveSmallIntegerField()
 
-    text = models.TextField()
+    text = models.TextField(blank=True, null=True)
 
     create_datetime = models.DateTimeField(auto_now_add=True)
     last_edit = models.DateTimeField(auto_now=True)
@@ -42,7 +42,7 @@ class Transcription(models.Model):
     @property
     def text_words(self):
         """Returns the number of words in a text."""
-        return len(self.text.split())
+        return len(self.text.split()) if self.text is not None else 0
 
     @property
     def audio_path(self):
