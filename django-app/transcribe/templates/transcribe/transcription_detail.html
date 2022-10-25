@@ -44,7 +44,7 @@
     <div class="row">
         <div class="col">
             {% if transcription_object.is_mp3 %}
-                <audio controls>
+                <audio controls class="w-100">
                     <source src="{{ transcription_object.audio.url }}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
