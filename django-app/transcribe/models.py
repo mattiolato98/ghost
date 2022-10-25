@@ -8,7 +8,7 @@ from django.core.files import File
 from django.db import models
 
 from ghost_base_folder.settings import MEDIA_ROOT
-import utils.audio_utils as audio_utils
+import transcribe.utils as audio_utils
 
 
 class Transcription(models.Model):

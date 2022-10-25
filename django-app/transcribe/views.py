@@ -9,7 +9,7 @@ from django.views.generic import CreateView, ListView
 from transcribe.forms import AudioForm
 from transcribe.models import Transcription
 
-from utils import audio_utils
+from transcribe import utils as audio_utils
 
 
 class TranscriptionCreateView(LoginRequiredMixin, CreateView):
