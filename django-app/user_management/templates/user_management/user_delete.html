@@ -37,32 +37,29 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                    <form method="POST" class="d-flex justify-content-between" autocomplete="off"> {% csrf_token %}
-                            <div class="col-12 col-lg-9">
-                                <div class="form-floating">
-                                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                                    <input id="username-check" type="text" class="form-control" placeholder="username">
-                                    <label>
-                                        <span class="small">
-                                            {% translate "For confirmation, enter your username:" %}
-                                        </span>
-                                        <span class="small text-muted font-6">{{ user.username }}</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col d-flex justify-content-center">
-
-                                <input id="delete-user-submit"
-                                       class="btn site-btn-red w-75"
-                                       type="submit"
-                                       value="{% translate "Delete" %}"
-                                       disabled="disabled">
-                            </div>
-                    </form>
+            <span class="small">
+                {% translate "For confirmation, enter your username:" %}
+            </span>
+            <span class="small text-muted font-6">{{ user.username }}</span>
+            <form method="POST" class="row gap-3" autocomplete="off"> {% csrf_token %}
+                <div class="col-12 col-lg-9">
+                    <div class="form-floating">
+                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                        <input id="username-check" type="text" class="form-control" placeholder="username">
+                        <label for="username-check">Username</label>
+                    </div>
                 </div>
-            </div>
+                <div class="col d-flex justify-content-end mobile-center">
+
+                    <input id="delete-user-submit"
+                           class="btn site-btn-red w-auto"
+                           type="submit"
+                           value="{% translate "Delete" %}"
+                           disabled="disabled">
+                </div>
+            </form>
         </div>
+    </div>
     </div>
 {% endblock %}
 
