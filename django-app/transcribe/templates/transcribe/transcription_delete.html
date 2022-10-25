@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }} {% translate "Delete transcription" %}
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center p-4">
+        <div class="site-box p-4 bg-white col-12 col-lg-7 shadow">
+            <div class="row mb-3">
+                <div class="col">
+                    <a href="{% url 'transcribe:transcription-list' object.pk %}" class="font-6 path-link no-decoration">
+                        <i class="fas fa-chevron-left mr-2"></i>
+                        {% translate "Back" %}
+                    </a>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="site-color header-font mb-0">{{ object.name }}</h2>
+                    <span class="text-muted header-font">{% translate "Delete transcription" %}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        <h5 class="alert-heading">{% translate "Warning" %} <i class="fas fa-exclamation-triangle"></i>
+                        </h5>
+                        <p>
+                        <span class="font-6">
+                            {% translate "Are you sure you want to delete this transcription?" %}
+                        </span>
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            {% translate "Make sure to download the transcription before deleting it. You won't be able to retrieve it later." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <p class="mb-0">
+                        <span class="font-6">{% translate 'Language' %}:</span>
+                        <span>{{ object.get_language_display|title }}</span>
+                    </p>
+                    <p class="mb-0">
+                        <span class="font-6">{% translate 'Audio duration' %}:</span>
+                        <span>{{ object.duration|to_datetime|time:"H:i:s" }}</span>
+                    </p>
+                    <p>
+                        <span class="font-6">{% translate 'Text words' %}:</span>
+                        <span>{{ object.text_words }}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-end mobile-center">
+                    <form method="POST"> {% csrf_token %}
+                        <input id="delete-transcription-submit"
+                               class="btn site-btn-red w-auto white-space-normal"
+                               type="submit"
+                               value="{% translate 'Delete this transcription' %}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
