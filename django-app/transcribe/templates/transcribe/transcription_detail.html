@@ -58,11 +58,32 @@
                     {% endblocktranslate %}
                 </p>
             {% endif %}
-            <p>
-                {% if transcription_object.text is not None %}
-                    {{ transcription_object.text }}
-                {% endif %}
-            </p>
         </div>
     </div>
+    {% if transcription_object.transcribed %}
+        <hr>
+        <div class="row me-4">
+            <div class="col">
+                <h3 class="header-font mb-0">{% translate 'Transcription' %}</h3>
+                <hr id="transcription-header-hr" class="site-red-text mt-0">
+            </div>
+            <div class="col-auto d-flex align-items-center">
+                <a href="#" class="site-blue-text font-7">{% translate 'Open editor' %} ></a>
+            </div>
+        </div>
+        <div class="row mt-5 me-5">
+            <div class="col">
+                <p>
+                    {{ transcription_object.text }}
+                </p>
+            </div>
+        </div>
+    {% else %}
+        <div class="row mt-4">
+            <div class="col">
+                <p class="mt-5 font-6 mb-0">{% translate 'Transcription will be available soon.' %}</p>
+                <hr id="processing-transcription-hr" class="site-red-text mt-0">
+            </div>
+        </div>
+    {% endif %}
 </div>
