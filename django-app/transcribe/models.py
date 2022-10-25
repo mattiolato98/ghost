@@ -76,7 +76,9 @@ class Transcription(models.Model):
         new_path = Path(audio_path)
         with new_path.open(mode='rb') as f:
             self.audio = File(f, name=new_path.name)
+            self.is_mp3 = True
             self.save()
+
         # removing the original copy of the file (duplicated by Django)
         audio_utils.remove_audio(audio_path)
 
