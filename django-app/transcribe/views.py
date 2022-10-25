@@ -1,11 +1,14 @@
 import celery
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DeleteView
 
+from transcribe.decorators import transcription_owner_only
 from transcribe.forms import AudioForm
 from transcribe.models import Transcription
 
@@ -67,3 +70,10 @@ class TranscriptionListView(LoginRequiredMixin, ListView):
         context = super(TranscriptionListView, self).get_context_data(**kwargs)
         context['transcription_object'] = self.object
         return context
+
+
+@method_decorator((login_required, transcription_owner_only), name="dispatch")
+class TranscriptionDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = 'transcribe/transcription_delete.html'
+    success_url = reverse_lazy('transcribe:transcription-list')
+    model = Transcription
