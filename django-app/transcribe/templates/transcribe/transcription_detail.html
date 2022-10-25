@@ -43,11 +43,21 @@
 
     <div class="row">
         <div class="col">
-            <audio controls>
-                <source src="{{ transcription_object.audio.url }}" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            {{ transcription_object.text }}
+            {% if transcription_object.is_mp3 %}
+                <audio controls>
+                    <source src="{{ transcription_object.audio.url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            {% else %}
+                <p>
+                    <i class="fa-solid fa-headphones"></i>
+                    {% blocktranslate %}
+                        We are <span class="font-6">converting</span> the audio.
+                        The <span class="font-6">player</span> will be available
+                        <span class="font-6 site-red-text">soon</span>.
+                    {% endblocktranslate %}
+                </p>
+            {% endif %}
         </div>
     </div>
 </div>
