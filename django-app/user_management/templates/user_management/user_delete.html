@@ -38,9 +38,10 @@
                 </div>
             </div>
             <div class="row">
-                    <form method="POST" class="d-flex justify-content-between"> {% csrf_token %}
+                    <form method="POST" class="d-flex justify-content-between" autocomplete="off"> {% csrf_token %}
                             <div class="col-12 col-lg-9">
                                 <div class="form-floating">
+                                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
                                     <input id="username-check" type="text" class="form-control" placeholder="username">
                                     <label>
                                         <span class="small">
