@@ -33,7 +33,7 @@
                 <i class="fa-solid fa-ellipsis cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                     <a class="dropdown-item dropdown-item-red cursor-pointer font-6"
-                       href="#">
+                       href="{% url 'transcribe:transcription-delete' transcription_object.pk %}">
                         <i class="fa-solid fa-trash"></i>
                         {% translate 'Delete' %}
                     </a>
