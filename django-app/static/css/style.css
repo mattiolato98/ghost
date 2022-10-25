@@ -307,3 +307,7 @@ hr {
 .dropdown-item.bg-danger-hover:hover span {
     color: white !important;
 }
+
+.white-space-normal {
+    white-space: normal;
+}
