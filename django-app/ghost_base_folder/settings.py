@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     # 3d party
     'crispy_forms',
     'crispy_bootstrap5',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
