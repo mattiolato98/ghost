@@ -1,66 +1,52 @@
-{% extends "base.html" %}
+{% extends "base_box.html" %}
 {% load i18n %}
 
 {% block title %}{{ block.super }} {% translate "Delete account" %}{% endblock %}
 
-{% block content %}
-    <div class="row justify-content-center p-4">
-        <div class="site-box p-4 bg-white col-12 col-lg-7 shadow">
-            <div class="row mb-3">
-                <div class="col">
-                    <a href="{% url "user_management:settings" %}" class="font-6 path-link no-decoration">
-                        <i class="fas fa-chevron-left mr-2"></i>
-                        {% translate "Settings" %}
-                    </a>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col">
-                    <h2 class="site-color header-font mb-0">{% translate "Delete your account" %}</h2>
-                    <span class="text-muted header-font">{% translate "This action is irreversible" %}</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="alert alert-danger" role="alert">
-                        <h5 class="alert-heading">{% translate "Warning" %} <i class="fas fa-exclamation-triangle"></i>
-                        </h5>
-                        <p>
-                        <span class="font-6">
-                            {% translate "Are you sure you want to delete your account?" %}
-                        </span>
-                        </p>
-                        <hr>
-                        <p class="mb-0">
-                            {% translate "All your data will be destroyed and you won't be able to retrieve it." %}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <span class="small">
-                {% translate "For confirmation, enter your username:" %}
-            </span>
-            <span class="small text-muted font-6">{{ user.username }}</span>
-            <form method="POST" class="row gap-3" autocomplete="off"> {% csrf_token %}
-                <div class="col-12 col-lg-9">
-                    <div class="form-floating">
-                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                        <input id="username-check" type="text" class="form-control" placeholder="username">
-                        <label for="username-check">Username</label>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-end mobile-center">
+{% block back_url %}
+    <a href="{% url "user_management:settings" %}" class="font-6 path-link no-decoration">
+        <i class="fas fa-chevron-left mr-2"></i>
+        {% translate "Settings" %}
+    </a>
+{% endblock %}
 
-                    <input id="delete-user-submit"
-                           class="btn site-btn-red w-auto"
-                           type="submit"
-                           value="{% translate "Delete" %}"
-                           disabled="disabled">
-                </div>
-            </form>
+{% block box_title %}{% translate 'Delete your account' %}{% endblock %}
+{% block box_subtitle %}{% translate 'This action is irreversible' %}{% endblock %}
+
+{% block main_content %}
+    <div class="alert alert-danger" role="alert">
+        <h5 class="alert-heading">{% translate 'Warning' %} <i class="fas fa-exclamation-triangle"></i>
+        </h5>
+        <p>
+            <span class="font-6">
+                {% translate 'Are you sure you want to delete your account?' %}
+            </span>
+        </p>
+        <hr>
+        <p class="mb-0">
+            {% translate "All your data will be destroyed and you won't be able to retrieve it." %}
+        </p>
+    </div>
+    <span class="small">
+        {% translate 'For confirmation, enter your username:' %}
+    </span>
+    <span class="small text-muted font-6">{{ user.username }}</span>
+    <form method="POST" class="row gap-3" autocomplete="off"> {% csrf_token %}
+        <div class="col-12 col-lg-9">
+            <div class="form-floating">
+                <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                <input id="username-check" type="text" class="form-control" placeholder="username">
+                <label for="username-check">Username</label>
+            </div>
         </div>
-    </div>
-    </div>
+        <div class="col d-flex justify-content-end mobile-center">
+            <input id="delete-user-submit"
+                   class="btn site-btn-red w-auto"
+                   type="submit"
+                   value="{% translate 'Delete' %}"
+                   disabled="disabled">
+        </div>
+    </form>
 {% endblock %}
 
 {% block extra_javascript %}

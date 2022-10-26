@@ -1,33 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base_box.html' %}
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}
-    {{ block.super }} {% translate "New audio" %}
+{% block title %}{{ block.super }} {% translate 'New audio' %}{% endblock %}
+
+{% block back_url %}
+    <a href="{% url 'transcribe:transcription-list' %}" class="font-6 path-link no-decoration">
+        <i class="fas fa-chevron-left mr-2"></i>
+        {% translate "Back" %}
+    </a>
 {% endblock %}
 
-{% block content %}
-    <div class="row justify-content-center p-4">
-        <div class="site-box p-4 bg-white col-12 col-lg-7 shadow">
-            <div class="row mb-3">
-                <div class="col">
-                    <a href="{% url 'transcribe:transcription-list' %}" class="font-6 path-link no-decoration">
-                        <i class="fas fa-chevron-left mr-2"></i>
-                        {% translate "Back" %}
-                    </a>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col">
-                    <h2 class="site-color header-font mb-0">{% translate "Drop an audio" %}</h2>
-                    <span class="text-muted header-font">{% translate "Transcription may take up to the duration of the audio" %}</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {% crispy form %}
-                </div>
-            </div>
-        </div>
-    </div>
+{% block box_title %}{% translate 'Drop an audio' %}{% endblock %}
+{% block box_subtitle %}{% translate 'Transcription may take up to the duration of the audio' %}{% endblock %}
+
+{% block main_content %}
+    {% crispy form %}
 {% endblock %}

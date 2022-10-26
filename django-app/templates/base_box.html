@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row justify-content-center p-4">
+        <div class="site-box p-4 bg-white col-12 col-lg-7 shadow">
+            <div class="row mb-3">
+                <div class="col">
+                    {% block back_url %}{% endblock %}
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="site-color header-font mb-0">{% block box_title %}{% endblock %}</h2>
+                    <span class="text-muted header-font">{% block box_subtitle %}{% endblock %}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col {% block col_main_content_classes %}{% endblock %}">
+                    {% block main_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
