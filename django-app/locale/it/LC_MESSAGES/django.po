@@ -1,0 +1,364 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-26 09:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/home.html:9
+msgid "Welcome to Ghost."
+msgstr ""
+
+#: transcribe/forms.py:30
+msgid "Transcribe"
+msgstr "Trascrivi"
+
+#: transcribe/templates/transcribe/transcription_delete.html:6
+#: transcribe/templates/transcribe/transcription_delete.html:23
+msgid "Delete transcription"
+msgstr "Elimina trascrizione"
+
+#: transcribe/templates/transcribe/transcription_delete.html:16
+#: transcribe/templates/transcribe/transcription_form.html:16
+#: user_management/templates/user_management/settings.html:13
+msgid "Back"
+msgstr "Indietro"
+
+#: transcribe/templates/transcribe/transcription_delete.html:29
+#: user_management/templates/user_management/user_delete.html:26
+msgid "Warning"
+msgstr "Attenzione"
+
+#: transcribe/templates/transcribe/transcription_delete.html:33
+msgid "Are you sure you want to delete this transcription?"
+msgstr "Vuoi davvero eliminare questa trascrizione?"
+
+#: transcribe/templates/transcribe/transcription_delete.html:38
+msgid ""
+"Make sure to download the transcription before deleting it. You won't be "
+"able to retrieve it later."
+msgstr ""
+"Assicurati di scaricare la trascrizione prima di eliminarla. Non potrai più "
+"recuperarla successivamente."
+
+#: transcribe/templates/transcribe/transcription_delete.html:46
+#: user_management/templates/user_management/settings.html:26
+msgid "Language"
+msgstr "Lingua"
+
+#: transcribe/templates/transcribe/transcription_delete.html:50
+msgid "Audio duration"
+msgstr "Durata dell'audio"
+
+#: transcribe/templates/transcribe/transcription_delete.html:54
+msgid "Text words"
+msgstr "Parole del testo"
+
+#: transcribe/templates/transcribe/transcription_delete.html:65
+msgid "Delete this transcription"
+msgstr "Elimina questa trascrizione"
+
+#: transcribe/templates/transcribe/transcription_detail.html:13
+msgid "Successfully transcribed"
+msgstr "Trascritto"
+
+#: transcribe/templates/transcribe/transcription_detail.html:18
+msgid "Processing audio"
+msgstr "Audio in elaborazione"
+
+#: transcribe/templates/transcribe/transcription_detail.html:25
+msgid "Created"
+msgstr "Creato"
+
+#: transcribe/templates/transcribe/transcription_detail.html:29
+msgid "Last edit"
+msgstr "Ultima modifica"
+
+#: transcribe/templates/transcribe/transcription_detail.html:38
+#: user_management/templates/user_management/user_delete.html:57
+msgid "Delete"
+msgstr "Elimina"
+
+#: transcribe/templates/transcribe/transcription_detail.html:54
+msgid ""
+"\n"
+"                        We are <span class=\"font-6\">converting</span> the "
+"audio.\n"
+"                        The <span class=\"font-6\">player</span> will be "
+"available\n"
+"                        <span class=\"font-6 site-red-text\">soon</span>.\n"
+"                    "
+msgstr ""
+"\n"
+"                        Stiamo <span class=\"font-6\">convertendo</span> "
+"l'audio.\n"
+"                        Il <span class=\"font-6\">player</span> "
+"sarà                         <span class=\"font-6 site-red-text\">presto</"
+"span> disponibile.\n"
+"                    "
+
+#: transcribe/templates/transcribe/transcription_detail.html:67
+msgid "Transcription"
+msgstr "Trascrizione"
+
+#: transcribe/templates/transcribe/transcription_detail.html:71
+msgid "Open editor"
+msgstr "Vai all'editor"
+
+#: transcribe/templates/transcribe/transcription_detail.html:84
+msgid "Transcription will be available soon."
+msgstr "La trascrizione sarà presto disponibile."
+
+#: transcribe/templates/transcribe/transcription_form.html:6
+msgid "New audio"
+msgstr "Nuovo audio"
+
+#: transcribe/templates/transcribe/transcription_form.html:22
+msgid "Drop an audio"
+msgstr "Inserisci un audio"
+
+#: transcribe/templates/transcribe/transcription_form.html:23
+msgid "Transcription may take up to the duration of the audio"
+msgstr "La trascrizione potrebbe richiedere fino alla durata dell'audio"
+
+#: transcribe/templates/transcribe/transcription_list.html:20
+msgid "words"
+msgstr "parole"
+
+#: transcribe/templates/transcribe/transcription_list_and_detail.html:25
+msgid "Audio"
+msgstr "Audio"
+
+#: transcribe/templates/transcribe/transcription_list_and_detail.html:55
+msgid ""
+"\n"
+"                        <p class=\"d-flex flex-column mb-0\">\n"
+"                            <span class=\"font-5 display-4\">No</span>\n"
+"                            <span class=\"display-3 font-7\">transcription</"
+"span>\n"
+"                        </p>\n"
+"                        <hr id=\"no-audio-hr\" class=\"site-red-text mb-2 "
+"mt-0\">\n"
+"                        <p>\n"
+"                            <span class=\"font-5 font-size-150\">available</"
+"span>\n"
+"                        </p>\n"
+"                    "
+msgstr ""
+"\n"
+"                        <p class=\"d-flex flex-column mb-0\">\n"
+"                            <span class=\"font-5 display-4\">Nessuna</span>\n"
+"                            <span class=\"display-3 font-7\">trascrizione</"
+"span>\n"
+"                        </p>\n"
+"                        <hr id=\"no-audio-hr\" class=\"site-red-text mb-2 "
+"mt-0\">\n"
+"                        <p>\n"
+"                            <span class=\"font-5 font-"
+"size-150\">disponibile</span>\n"
+"                        </p>\n"
+"                    "
+
+#: transcribe/templates/transcribe/transcription_list_and_detail.html:66
+msgid "Create your first transcription"
+msgstr "Genera la tua prima trascrizione"
+
+#: transcribe/templates/transcribe/transcription_list_and_detail.html:73           "
+msgid ""
+"\n"
+"                            <span class=\"font-7\">Select</span>\n"
+"                            <span class=\"font-7 font-size-150\">a "
+"transcription</span>\n"
+"                            <span class=\"font-5 text-muted\">or create a "
+"new one</span>\n"
+"                        "
+msgstr ""
+"\n"
+"                            <span class=\"font-7\">Seleziona</span>\n"
+"                            <span class=\"font-7 font-size-150\">una trascrizione </span>\n"
+"                            <span class=\"font-5 text-muted\">o creane una nuova </span>\n"
+"                        "
+
+#: transcribe/views.py:26
+msgid "Only audio file supported. Please try again with an audio file."
+msgstr "Perfavore inserisci un file audio."
+
+#: user_management/forms.py:26
+msgid ""
+"I agree with the <strong><a href='{}' target='_blank' class='site-"
+"link'>privacy policy</a></strong> and the use of essential cookies, "
+"according with our <strong><a href='{}' target='_blank' class='site-"
+"link'>cookie policy</a></strong>, in order to allow the proper operation of "
+"the app"
+msgstr ""
+"Ho preso visione e accetto la <strong><a href='{}' target='_blank' class='site-"
+"link'>privacy policy</a></strong> nonché l'utilizzo dei cookie essenziali, "
+"in accordo con la nostra <strong><a href='{}' target='_blank' class='site-"
+"link'>cookie policy</a></strong>, per consentire il normale funzionamento dell'app"
+
+#: user_management/forms.py:51
+msgid "You must accept the privacy policies."
+msgstr "Devi accettare le politiche sul trattamento dei dati."
+
+#: user_management/templates/registration/login.html:6
+msgid "Welcome Back"
+msgstr ""
+
+#: user_management/templates/registration/login.html:10
+msgid "Don't have an account yet? Sign up"
+msgstr "Non hai ancora un account? Registrati"
+
+#: user_management/templates/registration/registration.html:4
+#: user_management/templates/registration/registration.html:8
+msgid "Sign up"
+msgstr "Registrati"
+
+#: user_management/templates/registration/registration.html:6
+msgid "Fill the form with your information"
+msgstr "Inserisci le tue informazioni"
+
+#: user_management/templates/registration/registration.html:7
+msgid "We don't share your data to anyone"
+msgstr "Non condividiamo i tuoi dati con nessuno"
+
+#: user_management/templates/registration/registration.html:11
+msgid "Back to login"
+msgstr "Torna al login"
+
+#: user_management/templates/user_management/email_verification_needed.html:4
+msgid "Email confirmation"
+msgstr "Conferma della email"
+
+#: user_management/templates/user_management/email_verification_needed.html:9
+msgid "Check your email inbox."
+msgstr "Controlla la tua casella di posta."
+
+#: user_management/templates/user_management/email_verification_needed.html:11
+msgid ""
+"\n"
+"                    You should have received a link to confirm your email.\n"
+"                    If you have already confirmed it, you can now log in.\n"
+"                "
+msgstr ""
+"\n"
+"            Dovresti aver ricevuto un link per confermare la tua email.\n"
+"            Se lo hai gia' fatto, puoi procedere al login.\n"
+"            "
+
+#: user_management/templates/user_management/email_verified.html:13
+msgid "Email successfully verified"
+msgstr "Email verificata con successo"
+
+#: user_management/templates/user_management/email_verified.html:19
+msgid "Welcome"
+msgstr ""
+
+#: user_management/templates/user_management/email_verified.html:21
+msgid "Your email has been successfully verified."
+msgstr "La tua email è stata verificata con successo"
+
+#: user_management/templates/user_management/email_verified.html:24
+msgid "Join"
+msgstr "Entra"
+
+#: user_management/templates/user_management/settings.html:4
+#: user_management/templates/user_management/settings.html:19
+#: user_management/templates/user_management/user_delete.html:13
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: user_management/templates/user_management/settings.html:20
+msgid "Customize your experience"
+msgstr "Personalizza la tua esperienza"
+
+#: user_management/templates/user_management/settings.html:29
+msgid ""
+"\n"
+"                            Choose the default transcription language\n"
+"                        "
+msgstr ""
+"\n"
+"                            Seleziona la lingua di trascrizione di default\n"
+"                        "
+
+#: user_management/templates/user_management/settings.html:35
+msgid "Logout"
+msgstr "Esci"
+
+#: user_management/templates/user_management/settings.html:38
+msgid ""
+"\n"
+"                            Logout from the service\n"
+"                        "
+msgstr ""
+"\n"
+"                            Esci dal servizio\n"
+"                        "
+
+#: user_management/templates/user_management/settings.html:44
+msgid "Delete my account"
+msgstr "Elimina il mio account"
+
+#: user_management/templates/user_management/settings.html:47
+msgid ""
+"\n"
+"                            Delete your account and all your information\n"
+"                        "
+msgstr ""
+"\n"
+"                            Elimina il tuo account e tutte le tue informazioni\n"
+"                        "
+
+#: user_management/templates/user_management/user_ajax.html:23
+msgid "Someone stole this username. Damn!."
+msgstr "Qualcuno ha rubato questo username. Accidenti!"
+
+#: user_management/templates/user_management/user_delete.html:4
+msgid "Delete account"
+msgstr "Elimina account"
+
+#: user_management/templates/user_management/user_delete.html:19
+msgid "Delete your account"
+msgstr "Elimina il tuo account"
+
+#: user_management/templates/user_management/user_delete.html:20
+msgid "This action is irreversible"
+msgstr "Questa azione è irreversibile"
+
+#: user_management/templates/user_management/user_delete.html:30
+msgid "Are you sure you want to delete your account?"
+msgstr "Vuoi davvero eliminare il tuo account?"
+
+#: user_management/templates/user_management/user_delete.html:35
+msgid "All your data will be destroyed and you won't be able to retrieve it."
+msgstr "Tutti i tuoi dati saranno distrutti e non potrai più recuperarli."
+
+#: user_management/templates/user_management/user_delete.html:41
+msgid "For confirmation, enter your username:"
+msgstr "Per conferma, inserisci il tuo username:"
+
+#: user_management/views.py:130
+#, python-brace-format
+msgid ""
+"Error. Attempt to validate email for the user {user_id_b64} with token "
+"{user_token}"
+msgstr ""
+"Errore. Tentativo di valida l'email per l'utente {user_id_b64} con il token "
+"{user_token}"
+
+#: user_management/views.py:131
+msgid "Authentication error"
+msgstr "Errore di autenticazione"
