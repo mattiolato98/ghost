@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 13:07+0000\n"
+"POT-Creation-Date: 2022-10-26 13:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: templates/home.html:9
-msgid "Welcome to Ghost."
-msgstr ""
+msgid "Transcription is one step away"
+msgstr "La trascrizione è a un passo"
 
 #: transcribe/forms.py:30
 msgid "Transcribe"
@@ -217,7 +217,9 @@ msgid "You must accept the privacy policies."
 msgstr "Devi accettare le politiche sul trattamento dei dati."
 
 #: user_management/templates/registration/login.html:6
-msgid "Log In"
+#, fuzzy
+#| msgid "Log In"
+msgid "Log In "
 msgstr "Accedi"
 
 #: user_management/templates/registration/login.html:10
