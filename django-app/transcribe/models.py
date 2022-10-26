@@ -10,6 +10,8 @@ from django.db import models
 from ghost_base_folder.settings import MEDIA_ROOT
 import transcribe.utils as audio_utils
 
+from tinymce.models import HTMLField
+
 
 class Transcription(models.Model):
     """Model that represents an audio file and its transcription."""
@@ -18,7 +20,7 @@ class Transcription(models.Model):
     language = models.CharField(max_length=8, choices=list(LANGUAGES.items()), default='en')
     duration = models.PositiveSmallIntegerField()
 
-    text = models.TextField(blank=True, null=True)
+    text = HTMLField(blank=True, null=True)
 
     create_datetime = models.DateTimeField(auto_now_add=True)
     last_edit = models.DateTimeField(auto_now=True)
