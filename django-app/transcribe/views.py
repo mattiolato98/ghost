@@ -46,7 +46,7 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
                 args=(self.object.pk,),
             )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return super(TranscriptionCreateView, self).form_valid(form)
 
 
 class TranscriptionListView(LoginRequiredMixin, ListView):
