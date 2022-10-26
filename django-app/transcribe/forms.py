@@ -43,6 +43,11 @@ class AudioForm(forms.ModelForm):
             'language',
             'audio',
         )
+        labels = {
+            'name': _('Name'),
+            'language': _('Language'),
+            'audio': _('Audio'),
+        }
         widgets = {
             'language': forms.Select(),
             'audio': forms.ClearableFileInput(attrs={'type': 'file', 'accept': 'audio/*'}),
