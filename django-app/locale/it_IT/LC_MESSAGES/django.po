@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 13:13+0000\n"
+"POT-Creation-Date: 2022-10-26 14:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -222,10 +222,21 @@ msgstr ""
 msgid "You must accept the privacy policies."
 msgstr "Devi accettare le politiche sul trattamento dei dati."
 
+#: user_management/forms.py:87
+msgid "Old password"
+msgstr "Password attuale"
+
+#: user_management/forms.py:106
+#: user_management/templates/user_management/password_update.html:6
+#: user_management/templates/user_management/password_update.html:22
+#: user_management/templates/user_management/settings.html:35
+msgid "Update password"
+msgstr "Aggiorna password"
+
 #: user_management/templates/registration/login.html:6
 #, fuzzy
 #| msgid "Log In"
-msgid "Log In "
+msgid "Log In"
 msgstr "Accedi"
 
 #: user_management/templates/registration/login.html:10
@@ -285,11 +296,16 @@ msgstr "La tua email è stata verificata con successo"
 msgid "Join"
 msgstr "Entra"
 
+#: user_management/templates/user_management/password_update.html:16
 #: user_management/templates/user_management/settings.html:4
 #: user_management/templates/user_management/settings.html:19
 #: user_management/templates/user_management/user_delete.html:13
 msgid "Settings"
 msgstr "Impostazioni"
+
+#: user_management/templates/user_management/password_update.html:23
+msgid "Choose a new password"
+msgstr "Scegli una nuova password"
 
 #: user_management/templates/user_management/settings.html:20
 msgid "Customize your experience"
@@ -305,11 +321,21 @@ msgstr ""
 "                            Seleziona la lingua di trascrizione di default\n"
 "                        "
 
-#: user_management/templates/user_management/settings.html:35
+#: user_management/templates/user_management/settings.html:38
+msgid ""
+"\n"
+"                            Create a new password\n"
+"                        "
+msgstr ""
+"\n"
+"                            Crea una nuova password\n"
+"                        "
+
+#: user_management/templates/user_management/settings.html:44
 msgid "Logout"
 msgstr "Esci"
 
-#: user_management/templates/user_management/settings.html:38
+#: user_management/templates/user_management/settings.html:47
 msgid ""
 "\n"
 "                            Logout from the service\n"
@@ -319,11 +345,11 @@ msgstr ""
 "                            Esci dal servizio\n"
 "                        "
 
-#: user_management/templates/user_management/settings.html:44
+#: user_management/templates/user_management/settings.html:53
 msgid "Delete my account"
 msgstr "Elimina il mio account"
 
-#: user_management/templates/user_management/settings.html:47
+#: user_management/templates/user_management/settings.html:56
 msgid ""
 "\n"
 "                            Delete your account and all your information\n"
@@ -362,7 +388,11 @@ msgstr "Tutti i tuoi dati saranno distrutti e non potrai più recuperarli."
 msgid "For confirmation, enter your username:"
 msgstr "Per conferma, inserisci il tuo username:"
 
-#: user_management/views.py:130
+#: user_management/views.py:85
+msgid "The old password is not correct"
+msgstr "La password attuale non è corretta"
+
+#: user_management/views.py:152
 #, python-brace-format
 msgid ""
 "Error. Attempt to validate email for the user {user_id_b64} with token "
@@ -371,6 +401,6 @@ msgstr ""
 "Errore. Tentativo di valida l'email per l'utente {user_id_b64} con il token "
 "{user_token}"
 
-#: user_management/views.py:131
+#: user_management/views.py:153
 msgid "Authentication error"
 msgstr "Errore di autenticazione"
