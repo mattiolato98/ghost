@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 10:14+0000\n"
+"POT-Creation-Date: 2022-10-26 13:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,8 +217,8 @@ msgid "You must accept the privacy policies."
 msgstr "Devi accettare le politiche sul trattamento dei dati."
 
 #: user_management/templates/registration/login.html:6
-msgid "Welcome Back"
-msgstr ""
+msgid "Log In"
+msgstr "Accedi"
 
 #: user_management/templates/registration/login.html:10
 msgid "Don't have an account yet? Sign up"
