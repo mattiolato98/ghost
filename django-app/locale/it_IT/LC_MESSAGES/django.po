@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 13:10+0000\n"
+"POT-Creation-Date: 2022-10-26 13:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,21 @@ msgstr "La trascrizione è a un passo"
 #: transcribe/forms.py:30
 msgid "Transcribe"
 msgstr "Trascrivi"
+
+#: transcribe/forms.py:47
+msgid "Name"
+msgstr "Nome"
+
+#: transcribe/forms.py:48
+#: transcribe/templates/transcribe/transcription_delete.html:46
+#: user_management/templates/user_management/settings.html:26
+msgid "Language"
+msgstr "Lingua"
+
+#: transcribe/forms.py:49
+#: transcribe/templates/transcribe/transcription_list_and_detail.html:25
+msgid "Audio"
+msgstr "Audio"
 
 #: transcribe/templates/transcribe/transcription_delete.html:6
 #: transcribe/templates/transcribe/transcription_delete.html:23
@@ -53,11 +68,6 @@ msgid ""
 msgstr ""
 "Assicurati di scaricare la trascrizione prima di eliminarla. Non potrai più "
 "recuperarla successivamente."
-
-#: transcribe/templates/transcribe/transcription_delete.html:46
-#: user_management/templates/user_management/settings.html:26
-msgid "Language"
-msgstr "Lingua"
 
 #: transcribe/templates/transcribe/transcription_delete.html:50
 msgid "Audio duration"
@@ -137,10 +147,6 @@ msgstr "La trascrizione potrebbe richiedere fino alla durata dell'audio"
 #: transcribe/templates/transcribe/transcription_list.html:20
 msgid "words"
 msgstr "parole"
-
-#: transcribe/templates/transcribe/transcription_list_and_detail.html:25
-msgid "Audio"
-msgstr "Audio"
 
 #: transcribe/templates/transcribe/transcription_list_and_detail.html:55
 msgid ""
