@@ -52,3 +52,43 @@ class AudioForm(forms.ModelForm):
             'language': forms.Select(),
             'audio': forms.ClearableFileInput(attrs={'type': 'file', 'accept': 'audio/*'}),
         }
+
+
+class TranscriptionUpdateForm(forms.ModelForm):
+    helper = FormHelper()
+
+    def __init__(self, *args, **kwargs):
+        super(TranscriptionUpdateForm, self).__init__(*args, **kwargs)
+
+        self.helper.layout = Layout(
+            Row(
+                Column(FloatingField('name'), css_class='form-group col-12 col-lg-9'),
+                css_class='form-row'
+            ),
+            Row(
+                Column('text', css_class='form-group col-12 col-lg-9'),
+                css_class='form-row'
+            ),
+            Row(
+                Column(
+                    Submit(
+                        'submit',
+                        _('Save changes'),
+                        css_class='btn site-btn w-auto font-5 white-space-normal'
+                    ),
+                    css_class='col d-flex justify-content-end mobile-center mt-3'
+                ),
+                css_class='form-row'
+            ),
+        )
+
+    class Meta:
+        model = Transcription
+        fields = (
+            'name',
+            'text',
+        )
+        labels = {
+            'name': _('Name'),
+            'text': _('Text'),
+        }

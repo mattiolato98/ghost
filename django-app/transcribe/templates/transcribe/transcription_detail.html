@@ -68,7 +68,10 @@
                 <hr id="transcription-header-hr" class="site-red-text mt-0">
             </div>
             <div class="col-auto d-flex align-items-center">
-                <a href="#" class="site-blue-text font-7">{% translate 'Open editor' %} ></a>
+                <a href="{% url 'transcribe:transcription-update' transcription_object.pk %}"
+                   class="site-blue-text font-7">
+                    {% translate 'Open editor' %} >
+                </a>
             </div>
         </div>
         <div class="row mt-5 me-5">

@@ -6,10 +6,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 
 from transcribe.decorators import transcription_owner_only
-from transcribe.forms import AudioForm
+from transcribe.forms import AudioForm, TranscriptionUpdateForm
 from transcribe.models import Transcription
 
 from transcribe import utils as audio_utils
@@ -49,6 +49,16 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
         return super(TranscriptionCreateView, self).form_valid(form)
 
 
+@method_decorator((login_required, transcription_owner_only), name='dispatch')
+class TranscriptionUpdateView(LoginRequiredMixin, UpdateView):
+    model = Transcription
+    template_name = 'transcribe/transcription_update.html'
+    form_class = TranscriptionUpdateForm
+
+    def get_success_url(self):
+        return reverse_lazy('transcribe:transcription-list', kwargs={'pk': self.kwargs['pk']})
+
+
 class TranscriptionListView(LoginRequiredMixin, ListView):
     model = Transcription
     template_name = 'transcribe/transcription_list_and_detail.html'
@@ -72,7 +82,7 @@ class TranscriptionListView(LoginRequiredMixin, ListView):
         return context
 
 
-@method_decorator((login_required, transcription_owner_only), name="dispatch")
+@method_decorator((login_required, transcription_owner_only), name='dispatch')
 class TranscriptionDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'transcribe/transcription_delete.html'
     success_url = reverse_lazy('transcribe:transcription-list')

@@ -1,0 +1,19 @@
+{% extends 'base_box.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }} {% translate 'Edit transcription' %}{% endblock %}
+
+{% block back_url %}
+    <a href="{% url 'transcribe:transcription-list' object.pk %}" class="font-6 path-link no-decoration">
+        <i class="fas fa-chevron-left mr-2"></i>
+        {% translate 'Back' %}
+    </a>
+{% endblock %}
+
+{% block box_title %}{{ object.name }}{% endblock %}
+{% block box_subtitle %}{% translate 'Edit the transcription' %}{% endblock %}
+
+{% block main_content %}
+    {% crispy form %}
+{% endblock %}
