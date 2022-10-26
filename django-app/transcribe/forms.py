@@ -62,12 +62,12 @@ class TranscriptionUpdateForm(forms.ModelForm):
 
         self.helper.layout = Layout(
             Row(
-                Column(FloatingField('name'), css_class='form-group col-12 col-lg-9'),
-                css_class='form-row'
+                Column(FloatingField('name'), css_class='form-group col-12'),
+                css_class='form-row justify-content-center'
             ),
             Row(
-                Column('text', css_class='form-group col-12 col-lg-9'),
-                css_class='form-row'
+                Column('text', css_class='form-group col-9 mt-5'),
+                css_class='form-row justify-content-center'
             ),
             Row(
                 Column(
@@ -90,5 +90,5 @@ class TranscriptionUpdateForm(forms.ModelForm):
         )
         labels = {
             'name': _('Name'),
-            'text': _('Text'),
+            'text': '',
         }
