@@ -52,14 +52,16 @@
         {% else %}
             {% if transcriptions|length_is:0 %}
                 <div class="col d-flex justify-content-center text-center align-items-center flex-column">
-                    <p class="d-flex flex-column mb-0">
-                        <span class="font-5 display-4">{% translate 'No' %}</span>
-                        <span class="display-3 font-7">{% translate 'transcription' %}</span>
-                    </p>
-                    <hr id="no-audio-hr" class="site-red-text mb-2 mt-0">
-                    <p>
-                        <span class="font-5 font-size-150">{% translate 'available' %}</span>
-                    </p>
+                    {% blocktranslate %}
+                        <p class="d-flex flex-column mb-0">
+                            <span class="font-5 display-4">No</span>
+                            <span class="display-3 font-7">transcription</span>
+                        </p>
+                        <hr id="no-audio-hr" class="site-red-text mb-2 mt-0">
+                        <p>
+                            <span class="font-5 font-size-150">available</span>
+                        </p>
+                    {% endblocktranslate %}
                     <a href="{% url 'transcribe:transcription-form' %}" class="site-blue-text font-7 font-size-110 mt-5">
                         {% translate 'Create your first transcription' %} >
                     </a>
@@ -68,9 +70,11 @@
                 {% include 'transcribe/transcription_list.html' %}
                 <div class="col d-flex align-items-center mt-4 flex-column" style="margin-top: 15rem !important;">
                     <p class="d-flex flex-column mb-0">
-                        <span class="font-7">{% translate 'Select' %}</span>
-                        <span class="font-7 font-size-150">{% translate 'a transcription' %}</span>
-                        <span class="font-5 text-muted">{% translate 'or create a new one' %}</span>
+                        {% blocktranslate %}
+                            <span class="font-7">Select</span>
+                            <span class="font-7 font-size-150">a transcription</span>
+                            <span class="font-5 text-muted">or create a new one</span>
+                        {% endblocktranslate %}
                     </p>
                 </div>
             {% endif %}
