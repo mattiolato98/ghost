@@ -31,6 +31,15 @@
                         {% endblocktranslate %}
                     </span>
                     <hr>
+                    <a href="{% url 'user_management:password-update' %}" class="site-blue-text font-6 no-decoration">
+                        <i class="fa-solid fa-lock"></i> {% translate 'Update password' %}
+                    </a>
+                    <span class="text-muted font-5">
+                        {% blocktranslate %}
+                            Create a new password
+                        {% endblocktranslate %}
+                    </span>
+                    <hr>
                     <a href="{% url 'user_management:logout' %}" class="site-red-text font-6 no-decoration">
                         <i class="fa-solid fa-right-from-bracket"></i> {% translate "Logout" %}
                     </a>

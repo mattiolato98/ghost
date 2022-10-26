@@ -14,6 +14,7 @@ urlpatterns = [
     path('email/verification_needed', views.EmailVerificationNeededView.as_view(), name='email-verification-needed'),
     path('email/verified', views.EmailVerifiedView.as_view(), name='email-verified'),
     path('settings', views.SettingsTemplateView.as_view(), name='settings'),
+    path('settings/password', views.UpdatePasswordView.as_view(), name='password-update'),
     path('privacy-policy', views.PrivacyPolicyView.as_view(), name='privacy-policy'),
     path('cookie-policy', views.CookiePolicyView.as_view(), name='cookie-policy'),
     path('ajax-check-username-exists', views.ajax_check_username_exists, name='ajax-check-username-exists'),

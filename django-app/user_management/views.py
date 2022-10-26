@@ -12,10 +12,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_GET
-from django.views.generic import TemplateView, CreateView, DeleteView
+from django.views.generic import TemplateView, CreateView, DeleteView, UpdateView
 
 from user_management.decorators import not_authenticated_only
-from user_management.forms import LoginForm, PlatformUserCreationForm
+from user_management.forms import LoginForm, PlatformUserCreationForm, UpdatePasswordForm
 from user_management.models import PlatformUser
 
 
@@ -62,6 +62,28 @@ class RegistrationView(CreateView):
         self.object.save()
 
         return response
+
+
+class UpdatePasswordView(LoginRequiredMixin, UpdateView):
+    """
+    Password UpdateView.
+    """
+    model = get_user_model()
+    template_name = 'user_management/password_update.html'
+    success_url = reverse_lazy('user_management:settings')
+    form_class = UpdatePasswordForm
+
+    def get_object(self, queryset=None):
+        """Avoid passing users' primary keys in the URL"""
+        return self.request.user
+
+    def form_valid(self, form):
+        """Checks that the old password matches"""
+        if self.request.user.check_password(form.cleaned_data['old_password']):
+            return super(UpdatePasswordView, self).form_valid(form)
+        else:
+            form.add_error('old_password', error=_('The old password is not correct'))
+            return self.form_invalid(form)
 
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):

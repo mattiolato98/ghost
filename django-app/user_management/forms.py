@@ -1,6 +1,6 @@
 from crispy_bootstrap5.bootstrap5 import FloatingField
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Row, Column
+from crispy_forms.layout import Layout, Row, Column, Submit
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -78,4 +78,43 @@ class LoginForm(AuthenticationForm):
                 Column(FloatingField('password'), css_class='form-group mb-0'),
                 css_class='form-row'
             )
+        )
+
+
+class UpdatePasswordForm(UserCreationForm):
+    helper = FormHelper()
+
+    old_password = forms.CharField(label=_('Old password'), required=True, max_length=128, widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.helper.layout = Layout(
+            Row(
+                Column(FloatingField('old_password'), css_class='form-group mb-0'),
+                css_class='form-row'
+            ),
+            Row(
+                Column(FloatingField('password1'), css_class='form-group mb-0'),
+                Column(FloatingField('password2'), css_class='form-group mb-0'),
+                css_class='form-row'
+            ),
+            Row(
+                Column(
+                    Submit(
+                        'submit',
+                        _('Update password'),
+                        css_class='btn site-btn w-auto font-5 white-space-normal'
+                    ),
+                    css_class='col d-flex justify-content-end mobile-center mt-3'
+                ),
+                css_class='form-row'
+            ),
+        )
+
+    class Meta:
+        model = get_user_model()
+        fields = (
+            'password1',
+            'password2',
         )
