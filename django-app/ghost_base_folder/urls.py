@@ -24,6 +24,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
     path('', views.HomeTemplateView.as_view(), name='home'),
     path('transcribe/', include('transcribe.urls')),
     path('user/', include('user_management.urls')),
