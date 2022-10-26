@@ -6,9 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% blocktranslate %}
-        Welcome to Ghost.
-    {% endblocktranslate %}
+    {% translate 'Welcome to Ghost.' %}
     <a class="btn btn-info" href="{% url 'transcribe:transcription-form' %}">
         Transcribe
     </a>
