@@ -2,7 +2,18 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
+{% block extra_css %}
+    <style>
+        textarea {
+            resize: none;
+            border: none !important;
+        }
+    </style>
+{% endblock %}
+
 {% block title %}{{ block.super }} {% translate 'Edit transcription' %}{% endblock %}
+
+{% block box_col_size %}col-11 h-100{% endblock %}
 
 {% block back_url %}
     <a href="{% url 'transcribe:transcription-list' object.pk %}" class="font-6 path-link no-decoration">
@@ -16,4 +27,29 @@
 
 {% block main_content %}
     {% crispy form %}
+{% endblock %}
+
+{% block extra_javascript %}
+    <script>
+        function autoResize() {
+            console.log('resizing');
+            textInput.style.height = (textInput.scrollHeight) + 'px';
+        }
+
+        $(function () {
+            const textarea = document.getElementById("id_text");
+
+            textarea.addEventListener("input", function (e) {
+                this.style.height = "auto";
+                this.style.height = this.scrollHeight + "px";
+            });
+
+            $('textarea').each(function () {
+                this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+            }).on('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        });
+    </script>
 {% endblock %}
