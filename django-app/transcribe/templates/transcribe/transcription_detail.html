@@ -12,6 +12,16 @@
     </div>
     <div class="row mb-5 gap-3">
         <div class="col">
+            <div class="d-flex flex-column mb-3 d-sm-none">
+                <span class="text-muted header-font font-size-90">
+                    {% translate "Created" %}
+                    {{ transcription_object.create_datetime|naturalday }}
+                </span>
+                <span class="text-muted header-font font-size-90">
+                    {% translate "Last edit" %}
+                    {{ transcription_object.last_edit|naturalday }}
+                </span>
+            </div>
             <h2 class="header-font mb-0">{{ transcription_object.name }}</h2>
             <h5 class="text-muted">{{ transcription_object.get_language_display|title }}</h5>
             <div>
@@ -28,16 +38,18 @@
                 {% endif %}
             </div>
         </div>
-        <div class="d-flex col-auto justify-content-start align-items-mobile-start align-items-end flex-column">
-            <span class="text-muted header-font font-size-90">
-                {% translate "Created" %}
-                {{ transcription_object.create_datetime|naturalday }}
-            </span>
-            <span class="text-muted header-font font-size-90">
-                {% translate "Last edit" %}
-                {{ transcription_object.last_edit|naturalday }}
-            </span>
-            <div class="mt-4">
+        <div class="d-flex col-auto justify-content-start align-items-end flex-column">
+            <div class="d-sm-flex flex-column align-items-end d-none">
+                <span class="text-muted header-font font-size-90">
+                    {% translate "Created" %}
+                    {{ transcription_object.create_datetime|naturalday }}
+                </span>
+                    <span class="text-muted header-font font-size-90">
+                    {% translate "Last edit" %}
+                    {{ transcription_object.last_edit|naturalday }}
+                </span>
+            </div>
+            <div class="mt-sm-4">
                 <i class="fa-solid fa-ellipsis cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                     <a class="dropdown-item dropdown-item-red cursor-pointer font-6"
@@ -82,7 +94,7 @@
                 </a>
             </div>
         </div>
-        <div class="row mt-5 me-5">
+        <div class="row mt-5">
             <div class="col">
                 <p>
                     {{ transcription_object.text|safe }}
