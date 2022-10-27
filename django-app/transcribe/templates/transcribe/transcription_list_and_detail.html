@@ -18,6 +18,9 @@
             height: 5px;
             opacity: 100%;
         }
+        #transcription-empty-detail-msg {
+            margin-top: 15rem !important;
+        }
     </style>
 {% endblock %}
 
@@ -68,7 +71,8 @@
                 </div>
             {% else %}
                 {% include 'transcribe/transcription_list.html' %}
-                <div class="col d-flex align-items-center mt-4 flex-column" style="margin-top: 15rem !important;">
+                <div id="transcription-empty-detail-msg"
+                     class="col d-none align-items-center mt-4 flex-column">
                     <p class="d-flex flex-column mb-0">
                         {% blocktranslate %}
                             <span class="font-7">Select</span>
@@ -80,4 +84,33 @@
             {% endif %}
         {% endif %}
     </div>
+{% endblock %}
+
+{% block extra_javascript %}
+    <script>
+        $(function () {
+            let width = window.innerWidth;
+
+            {% if transcription_object is not None %}
+                // detail box visible
+
+                if (width <= 991) {
+                    // small screens: back url visible
+                    $('#transcription-detail-back-url').attr('style', 'display: flex !important');
+                } else {
+                    // big screens: list box visible
+                    $('#transcription-list-box').attr('style', 'display: flex !important');
+                }
+            {% else %}
+                // detail box not visible
+
+                // list box visible on all screens
+                 $('#transcription-list-box').attr('style', 'display: flex !important');
+                if (width >= 992) {
+                    // big screens: no detail msg visible
+                    $('#transcription-empty-detail-msg').attr('style', 'display: flex !important');
+                }
+            {% endif %}
+        });
+    </script>
 {% endblock %}
