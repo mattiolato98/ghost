@@ -66,7 +66,7 @@ class TranscriptionUpdateForm(forms.ModelForm):
                 css_class='form-row justify-content-center'
             ),
             Row(
-                Column('text', css_class='form-group col-9 mt-5'),
+                Column('text', css_class='form-group col-10 mt-5'),
                 css_class='form-row justify-content-center'
             ),
             Row(
