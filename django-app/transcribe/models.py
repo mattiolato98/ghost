@@ -10,6 +10,8 @@ from django.db import models
 from ghost_base_folder.settings import MEDIA_ROOT
 import transcribe.utils as audio_utils
 
+import bleach as bleach
+from bleach.css_sanitizer import CSSSanitizer
 from tinymce.models import HTMLField
 
 
@@ -31,6 +33,29 @@ class Transcription(models.Model):
 
     def __str__(self):
         return f'{self.name} of {self.user.username}'
+
+    def clean(self):
+        """Clean the message field from unauthorized tags.
+        This prevents errors in visualization when the message is rendered in the frontend.
+        """
+        tags = [
+            'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+            'pre', 'p', 'br', 'span', 'code', 'em',
+            'i', 'li', 'ol', 'strong', 'ul', 'b', 'abbr'
+        ]
+        attrs = {
+            '*': ['style'],
+            'abbr': ['title'],
+        }
+        css_sanitizer = CSSSanitizer(allowed_css_properties=['background-color', 'text-align'])
+
+        self.message = bleach.clean(self.text,
+                                    tags=tags,
+                                    attributes=attrs,
+                                    css_sanitizer=css_sanitizer,
+                                    strip=True)
+
+        super(Transcription, self).clean()
 
     def save(self, *args, **kwargs):
         """Saves the audio duration in the model field before saving
