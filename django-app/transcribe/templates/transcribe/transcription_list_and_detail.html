@@ -3,6 +3,20 @@
 
 {% block extra_css %}
     <style>
+        @media (max-width: 991px) {
+        {% if transcription_object is not None %}
+            #transcription-detail-back-url {
+                display: flex !important;
+            }
+            #transcription-list-box {
+                display: none !important;
+            }
+        {% endif %}
+            #transcription-empty-detail-msg {
+                display: none !important;
+            }
+        }
+
         #processing-transcription-hr {
             width: 300px;
             height: 3px;
@@ -72,7 +86,7 @@
             {% else %}
                 {% include 'transcribe/transcription_list.html' %}
                 <div id="transcription-empty-detail-msg"
-                     class="col d-none align-items-center mt-4 flex-column">
+                     class="col d-flex align-items-center mt-4 flex-column">
                     <p class="d-flex flex-column mb-0">
                         {% blocktranslate %}
                             <span class="font-7">Select</span>
@@ -84,33 +98,4 @@
             {% endif %}
         {% endif %}
     </div>
-{% endblock %}
-
-{% block extra_javascript %}
-    <script>
-        $(function () {
-            let width = window.innerWidth;
-
-            {% if transcription_object is not None %}
-                // detail box visible
-
-                if (width <= 991) {
-                    // small screens: back url visible
-                    $('#transcription-detail-back-url').attr('style', 'display: flex !important');
-                } else {
-                    // big screens: list box visible
-                    $('#transcription-list-box').attr('style', 'display: flex !important');
-                }
-            {% else %}
-                // detail box not visible
-
-                // list box visible on all screens
-                 $('#transcription-list-box').attr('style', 'display: flex !important');
-                if (width >= 992) {
-                    // big screens: no detail msg visible
-                    $('#transcription-empty-detail-msg').attr('style', 'display: flex !important');
-                }
-            {% endif %}
-        });
-    </script>
 {% endblock %}
