@@ -34,28 +34,3 @@
 {% block main_content %}
     {% crispy form %}
 {% endblock %}
-
-{% block extra_javascript %}
-    <script>
-        function autoResize() {
-            console.log('resizing');
-            textInput.style.height = (textInput.scrollHeight) + 'px';
-        }
-
-        $(function () {
-            const textarea = document.getElementById("id_text");
-
-            textarea.addEventListener("input", function (e) {
-                this.style.height = "auto";
-                this.style.height = this.scrollHeight + "px";
-            });
-
-            $('textarea').each(function () {
-                this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
-            }).on('input', function () {
-                this.style.height = 'auto';
-                this.style.height = (this.scrollHeight) + 'px';
-            });
-        });
-    </script>
-{% endblock %}
