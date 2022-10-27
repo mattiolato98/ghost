@@ -1,6 +1,7 @@
 .python-version
 .idea/
 django-app/ghost_base_folder/email_settings.py
+django-app/ghost_base_folder/admin_emails.py
 *__pycache__
 django-app/db.sqlite3
 .vscode/
