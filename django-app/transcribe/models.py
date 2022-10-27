@@ -62,8 +62,10 @@ class Transcription(models.Model):
         """Saves the audio duration in the model field before saving
         effectively the object.
         """
-        audio_info = mutagen.File(self.audio).info
-        self.duration = int(audio_info.length)
+        if not self.pk:
+            # execute only on create
+            audio_info = mutagen.File(self.audio).info
+            self.duration = int(audio_info.length)
 
         super(Transcription, self).save(*args, **kwargs)
 
