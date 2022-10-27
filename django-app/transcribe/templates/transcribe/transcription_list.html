@@ -20,7 +20,7 @@
                     <h6 class="font-6 header-font">{{ transcription.name }}</h6>
                     <p class="mb-0 text-muted header-font">
                         <i class="fa-solid fa-microphone-lines"></i>
-                        {{ transcription.duration|to_datetime|time:"H:i:s" }}
+                        {{ transcription.readable_duration }}
                     </p>
                     <p class="mb-0 text-muted header-font">
                         {{ transcription.text_words }} {% translate "words" %}
