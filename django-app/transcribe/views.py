@@ -1,8 +1,11 @@
+import os.path
+
 import celery
 
+from django.conf import settings as django_settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import mail_admins
+from django.core.mail import mail_admins, EmailMultiAlternatives
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -27,6 +30,21 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
             form.add_error("audio", error=not_audio_file_error_msg)
             return self.form_invalid(form)
 
+        def send_notification():
+            subject = 'New audio uploaded'
+            msg = (
+                f'New audio uploaded by {self.object.user.username}.\n'
+                f'- Name: {self.object.name}\n'
+                f'- Language: {self.object.language}\n'
+                f'- Audio duration: {self.object.readable_duration}\n'
+                f'- Audio: http://localhost:8000/admin/transcribe/transcription/{self.object.pk}/change/'
+            )
+
+            mail_admins(
+                subject,
+                msg,
+            )
+
         try:
             is_audio, audio_format = audio_utils.audio_info(form.cleaned_data['audio'].temporary_file_path())
             if not is_audio:
@@ -42,19 +60,7 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
 
         self.object = form.save()
 
-        mail_admins(
-            'New audio uploaded',
-            '',
-            html_message=f"""
-                <p>A new audio has been just uploaded.</p>
-                <ul>
-                <li>Name: {self.object.name}</li>
-                <li>Language: {self.object.language}</li>
-                <li>Audio duration: {self.object.duration}</li>
-                <li>Audio: {self.object.audio.url}</li>
-                </ul>
-            """,
-        )
+        send_notification()
 
         if not form.instance.is_mp3:
             celery.current_app.send_task(
