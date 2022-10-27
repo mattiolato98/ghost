@@ -1,6 +1,6 @@
 from crispy_bootstrap5.bootstrap5 import FloatingField
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Row, Column, Submit, Field
+from crispy_forms.layout import Layout, Row, Column, Submit, Field, HTML
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -66,7 +66,16 @@ class TranscriptionUpdateForm(forms.ModelForm):
                 css_class='form-row justify-content-center'
             ),
             Row(
-                Column('text', css_class='form-group col-10 mt-5'),
+                Column(HTML("""
+                    <audio controls class="w-100">
+                        <source src="{{ object.audio.url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                """), css_class='col-10'),
+                css_class='d-flex justify-content-center mt-5'
+            ),
+            Row(
+                Column('text', css_class='form-group col-10 mt-4'),
                 css_class='form-row justify-content-center'
             ),
             Row(
