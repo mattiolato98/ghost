@@ -38,22 +38,23 @@ class Transcription(models.Model):
         """Clean the message field from unauthorized tags.
         This prevents errors in visualization when the message is rendered in the frontend.
         """
-        tags = [
-            'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-            'pre', 'p', 'br', 'span', 'code', 'em',
-            'i', 'li', 'ol', 'strong', 'ul', 'b', 'abbr'
-        ]
-        attrs = {
-            '*': ['style'],
-            'abbr': ['title'],
-        }
-        css_sanitizer = CSSSanitizer(allowed_css_properties=['background-color', 'text-align'])
+        if self.text is not None:
+            tags = [
+                'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                'pre', 'p', 'br', 'span', 'code', 'em',
+                'i', 'li', 'ol', 'strong', 'ul', 'b', 'abbr'
+            ]
+            attrs = {
+                '*': ['style'],
+                'abbr': ['title'],
+            }
+            css_sanitizer = CSSSanitizer(allowed_css_properties=['background-color', 'text-align'])
 
-        self.message = bleach.clean(self.text,
-                                    tags=tags,
-                                    attributes=attrs,
-                                    css_sanitizer=css_sanitizer,
-                                    strip=True)
+            self.message = bleach.clean(self.text,
+                                        tags=tags,
+                                        attributes=attrs,
+                                        css_sanitizer=css_sanitizer,
+                                        strip=True)
 
         super(Transcription, self).clean()
 
