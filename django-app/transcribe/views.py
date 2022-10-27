@@ -18,7 +18,7 @@ from transcribe import utils as audio_utils
 class TranscriptionCreateView(LoginRequiredMixin, CreateView):
     model = Transcription
     form_class = TranscriptionCreateForm
-    template_name = 'transcribe/transcription_form.html'
+    template_name = 'transcribe/transcription_create.html'
     success_url = reverse_lazy('transcribe:transcription-list')
 
     def form_valid(self, form):
