@@ -16,6 +16,7 @@ from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
 from ghost_base_folder.email_settings import *
+from ghost_base_folder.admin_emails import emails
 
 # Celery configuration variables
 REDIS_HOST = os.environ.get('GHOST_REDIS_HOSTNAME')
@@ -42,6 +43,8 @@ DEBUG = bool(int(os.environ.get('DEBUG', '0')))
 
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS.extend(filter(None, os.environ.get('GHOST_ALLOWED_HOSTS', '').split(',')))
+
+ADMINS = emails
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
