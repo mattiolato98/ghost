@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 14:55+0000\n"
+"POT-Creation-Date: 2022-10-27 20:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,13 @@ msgstr "La trascrizione è a un passo"
 msgid "Transcribe"
 msgstr "Trascrivi"
 
-#: transcribe/forms.py:47
+#: transcribe/forms.py:47 transcribe/forms.py:101
 msgid "Name"
 msgstr "Nome"
 
 #: transcribe/forms.py:48
 #: transcribe/templates/transcribe/transcription_delete.html:46
-#: user_management/templates/user_management/settings.html:26
+#: user_management/templates/user_management/settings.html:19
 msgid "Language"
 msgstr "Lingua"
 
@@ -41,19 +41,37 @@ msgstr "Lingua"
 msgid "Audio"
 msgstr "Audio"
 
+#: transcribe/forms.py:85
+msgid "Save changes"
+msgstr "Salva modifiche"
+
+#: transcribe/templates/transcribe/transcription_create.html:5
+msgid "New audio"
+msgstr "Nuovo audio"
+
+#: transcribe/templates/transcribe/transcription_create.html:10
+#: transcribe/templates/transcribe/transcription_delete.html:16
+#: transcribe/templates/transcribe/transcription_detail.html:9
+#: transcribe/templates/transcribe/transcription_update.html:27
+#: user_management/templates/user_management/settings.html:9
+msgid "Back"
+msgstr "Indietro"
+
+#: transcribe/templates/transcribe/transcription_create.html:14
+msgid "Drop an audio"
+msgstr "Inserisci un audio"
+
+#: transcribe/templates/transcribe/transcription_create.html:15
+msgid "Transcription may take up to the duration of the audio"
+msgstr "La trascrizione potrebbe richiedere fino alla durata dell'audio"
+
 #: transcribe/templates/transcribe/transcription_delete.html:6
 #: transcribe/templates/transcribe/transcription_delete.html:23
 msgid "Delete transcription"
 msgstr "Elimina trascrizione"
 
-#: transcribe/templates/transcribe/transcription_delete.html:16
-#: transcribe/templates/transcribe/transcription_form.html:16
-#: user_management/templates/user_management/settings.html:13
-msgid "Back"
-msgstr "Indietro"
-
 #: transcribe/templates/transcribe/transcription_delete.html:29
-#: user_management/templates/user_management/user_delete.html:26
+#: user_management/templates/user_management/user_delete.html:18
 msgid "Warning"
 msgstr "Attenzione"
 
@@ -81,28 +99,30 @@ msgstr "Parole del testo"
 msgid "Delete this transcription"
 msgstr "Elimina questa trascrizione"
 
-#: transcribe/templates/transcribe/transcription_detail.html:13
-msgid "Successfully transcribed"
-msgstr "Trascritto"
-
-#: transcribe/templates/transcribe/transcription_detail.html:18
-msgid "Processing audio"
-msgstr "Audio in elaborazione"
-
-#: transcribe/templates/transcribe/transcription_detail.html:25
+#: transcribe/templates/transcribe/transcription_detail.html:17
+#: transcribe/templates/transcribe/transcription_detail.html:44
 msgid "Created"
 msgstr "Creato"
 
-#: transcribe/templates/transcribe/transcription_detail.html:29
+#: transcribe/templates/transcribe/transcription_detail.html:21
+#: transcribe/templates/transcribe/transcription_detail.html:48
 msgid "Last edit"
 msgstr "Ultima modifica"
 
-#: transcribe/templates/transcribe/transcription_detail.html:38
-#: user_management/templates/user_management/user_delete.html:57
+#: transcribe/templates/transcribe/transcription_detail.html:31
+msgid "Successfully transcribed"
+msgstr "Trascritto"
+
+#: transcribe/templates/transcribe/transcription_detail.html:36
+msgid "Processing audio"
+msgstr "Audio in elaborazione"
+
+#: transcribe/templates/transcribe/transcription_detail.html:58
+#: user_management/templates/user_management/user_delete.html:46
 msgid "Delete"
 msgstr "Elimina"
 
-#: transcribe/templates/transcribe/transcription_detail.html:54
+#: transcribe/templates/transcribe/transcription_detail.html:74
 msgid ""
 "\n"
 "                        We are <span class=\"font-6\">converting</span> the "
@@ -120,31 +140,19 @@ msgstr ""
 "span> disponibile.\n"
 "                    "
 
-#: transcribe/templates/transcribe/transcription_detail.html:67
+#: transcribe/templates/transcribe/transcription_detail.html:87
 msgid "Transcription"
 msgstr "Trascrizione"
 
-#: transcribe/templates/transcribe/transcription_detail.html:71
+#: transcribe/templates/transcribe/transcription_detail.html:93
 msgid "Open editor"
 msgstr "Vai all'editor"
 
-#: transcribe/templates/transcribe/transcription_detail.html:84
+#: transcribe/templates/transcribe/transcription_detail.html:107
 msgid "Transcription will be available soon."
 msgstr "La trascrizione sarà presto disponibile."
 
-#: transcribe/templates/transcribe/transcription_form.html:6
-msgid "New audio"
-msgstr "Nuovo audio"
-
-#: transcribe/templates/transcribe/transcription_form.html:22
-msgid "Drop an audio"
-msgstr "Inserisci un audio"
-
-#: transcribe/templates/transcribe/transcription_form.html:23
-msgid "Transcription may take up to the duration of the audio"
-msgstr "La trascrizione potrebbe richiedere fino alla durata dell'audio"
-
-#: transcribe/templates/transcribe/transcription_list.html:20
+#: transcribe/templates/transcribe/transcription_list.html:26
 msgid "words"
 msgstr "parole"
 
@@ -200,6 +208,18 @@ msgstr ""
 "nuova </span>\n"
 "                        "
 
+#: transcribe/templates/transcribe/transcription_update.html:20
+#, fuzzy
+#| msgid "Delete transcription"
+msgid "Edit transcription"
+msgstr "Elimina trascrizione"
+
+#: transcribe/templates/transcribe/transcription_update.html:32
+#, fuzzy
+#| msgid "Delete this transcription"
+msgid "Edit the transcription"
+msgstr "Elimina questa trascrizione"
+
 #: transcribe/views.py:26
 msgid "Only audio file supported. Please try again with an audio file."
 msgstr "Perfavore inserisci un file audio."
@@ -227,9 +247,9 @@ msgid "Old password"
 msgstr "Password attuale"
 
 #: user_management/forms.py:106
-#: user_management/templates/user_management/password_update.html:6
-#: user_management/templates/user_management/password_update.html:22
-#: user_management/templates/user_management/settings.html:35
+#: user_management/templates/user_management/password_update.html:5
+#: user_management/templates/user_management/password_update.html:14
+#: user_management/templates/user_management/settings.html:28
 msgid "Update password"
 msgstr "Aggiorna password"
 
@@ -296,64 +316,64 @@ msgstr "La tua email è stata verificata con successo"
 msgid "Join"
 msgstr "Entra"
 
-#: user_management/templates/user_management/password_update.html:16
+#: user_management/templates/user_management/password_update.html:10
 #: user_management/templates/user_management/settings.html:4
-#: user_management/templates/user_management/settings.html:19
-#: user_management/templates/user_management/user_delete.html:13
+#: user_management/templates/user_management/settings.html:13
+#: user_management/templates/user_management/user_delete.html:9
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: user_management/templates/user_management/password_update.html:23
+#: user_management/templates/user_management/password_update.html:15
 msgid "Choose a new password"
 msgstr "Scegli una nuova password"
 
-#: user_management/templates/user_management/settings.html:20
+#: user_management/templates/user_management/settings.html:14
 msgid "Customize your experience"
 msgstr "Personalizza la tua esperienza"
 
-#: user_management/templates/user_management/settings.html:29
+#: user_management/templates/user_management/settings.html:22
 msgid ""
 "\n"
-"                            Choose the default transcription language\n"
-"                        "
+"            Choose the default transcription language\n"
+"        "
 msgstr ""
 "\n"
 "                            Seleziona la lingua di trascrizione di default\n"
 "                        "
 
-#: user_management/templates/user_management/settings.html:38
+#: user_management/templates/user_management/settings.html:31
 msgid ""
 "\n"
-"                            Create a new password\n"
-"                        "
+"            Create a new password\n"
+"        "
 msgstr ""
 "\n"
 "                            Crea una nuova password\n"
 "                        "
 
-#: user_management/templates/user_management/settings.html:44
+#: user_management/templates/user_management/settings.html:37
 msgid "Logout"
 msgstr "Esci"
 
-#: user_management/templates/user_management/settings.html:47
+#: user_management/templates/user_management/settings.html:40
 msgid ""
 "\n"
-"                            Logout from the service\n"
-"                        "
+"            Logout from the service\n"
+"        "
 msgstr ""
 "\n"
 "                            Esci dal servizio\n"
 "                        "
 
-#: user_management/templates/user_management/settings.html:53
+#: user_management/templates/user_management/settings.html:46
 msgid "Delete my account"
 msgstr "Elimina il mio account"
 
-#: user_management/templates/user_management/settings.html:56
+#: user_management/templates/user_management/settings.html:49
 msgid ""
 "\n"
-"                            Delete your account and all your information\n"
-"                        "
+"            Delete your account and all your information\n"
+"        "
 msgstr ""
 "\n"
 "                            Elimina il tuo account e tutte le tue "
@@ -368,23 +388,23 @@ msgstr "Qualcuno ha rubato questo username. Accidenti!"
 msgid "Delete account"
 msgstr "Elimina account"
 
-#: user_management/templates/user_management/user_delete.html:19
+#: user_management/templates/user_management/user_delete.html:13
 msgid "Delete your account"
 msgstr "Elimina il tuo account"
 
-#: user_management/templates/user_management/user_delete.html:20
+#: user_management/templates/user_management/user_delete.html:14
 msgid "This action is irreversible"
 msgstr "Questa azione è irreversibile"
 
-#: user_management/templates/user_management/user_delete.html:30
+#: user_management/templates/user_management/user_delete.html:22
 msgid "Are you sure you want to delete your account?"
 msgstr "Vuoi davvero eliminare il tuo account?"
 
-#: user_management/templates/user_management/user_delete.html:35
+#: user_management/templates/user_management/user_delete.html:27
 msgid "All your data will be destroyed and you won't be able to retrieve it."
 msgstr "Tutti i tuoi dati saranno distrutti e non potrai più recuperarli."
 
-#: user_management/templates/user_management/user_delete.html:41
+#: user_management/templates/user_management/user_delete.html:31
 msgid "For confirmation, enter your username:"
 msgstr "Per conferma, inserisci il tuo username:"
 
