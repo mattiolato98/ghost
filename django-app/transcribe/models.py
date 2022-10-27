@@ -1,8 +1,10 @@
+import datetime
 import os
 from pathlib import Path
 
 import mutagen
 from django.contrib.auth import get_user_model
+from django.utils import formats
 from googletrans import LANGUAGES
 from django.core.files import File
 from django.db import models
@@ -68,6 +70,10 @@ class Transcription(models.Model):
             self.duration = int(audio_info.length)
 
         super(Transcription, self).save(*args, **kwargs)
+
+    @property
+    def readable_duration(self):
+        return formats.time_format(datetime.datetime.fromtimestamp(self.duration), 'H:i:s')
 
     @property
     def text_words(self):
