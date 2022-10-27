@@ -3,8 +3,12 @@ import os
 import fleep
 
 
-def audio_info(audio_path):
-    with open(audio_path, 'rb') as file:
+def audio_info(audio, in_memory=False):
+    if in_memory:
+        info = fleep.get(audio.read(128))
+        return is_audio(info), info.extension[0]
+
+    with open(audio, 'rb') as file:
         info = fleep.get(file.read(128))
         return is_audio(info), info.extension[0]
 

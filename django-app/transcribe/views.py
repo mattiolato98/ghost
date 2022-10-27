@@ -2,7 +2,6 @@ import celery
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -32,7 +31,9 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
             if not is_audio:
                 return not_audio_raise_error()
         except AttributeError:
-            return not_audio_raise_error()
+            is_audio, audio_format = audio_utils.audio_info(form.cleaned_data['audio'].file, in_memory=True)
+            if not is_audio:
+                return not_audio_raise_error()
 
         # assigning current user to the object
         form.instance.user = self.request.user
