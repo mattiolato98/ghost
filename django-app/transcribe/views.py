@@ -2,6 +2,7 @@ import celery
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import mail_admins
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -40,6 +41,20 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
         form.instance.is_mp3 = True if audio_format == 'mp3' else False
 
         self.object = form.save()
+
+        mail_admins(
+            'New audio uploaded',
+            '',
+            html_message=f"""
+                <p>A new audio has been just uploaded.</p>
+                <ul>
+                <li>Name: {self.object.name}</li>
+                <li>Language: {self.object.language}</li>
+                <li>Audio duration: {self.object.duration}</li>
+                <li>Audio: {self.object.audio.url}</li>
+                </ul>
+            """,
+        )
 
         if not form.instance.is_mp3:
             celery.current_app.send_task(
