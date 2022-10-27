@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 
 from transcribe.decorators import transcription_owner_only
-from transcribe.forms import AudioForm, TranscriptionUpdateForm
+from transcribe.forms import TranscriptionCreateForm, TranscriptionUpdateForm
 from transcribe.models import Transcription
 
 from transcribe import utils as audio_utils
@@ -17,7 +17,7 @@ from transcribe import utils as audio_utils
 
 class TranscriptionCreateView(LoginRequiredMixin, CreateView):
     model = Transcription
-    form_class = AudioForm
+    form_class = TranscriptionCreateForm
     template_name = 'transcribe/transcription_form.html'
     success_url = reverse_lazy('transcribe:transcription-list')
 

@@ -7,14 +7,14 @@ from django.utils.translation import gettext_lazy as _
 from transcribe.models import Transcription
 
 
-class AudioForm(forms.ModelForm):
+class TranscriptionCreateForm(forms.ModelForm):
     """
     Form to upload an audio file.
     """
     helper = FormHelper()
 
     def __init__(self, *args, **kwargs):
-        super(AudioForm, self).__init__(*args, **kwargs)
+        super(TranscriptionCreateForm, self).__init__(*args, **kwargs)
 
         self.helper.layout = Layout(
             Row(
