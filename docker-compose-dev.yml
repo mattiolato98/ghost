@@ -14,8 +14,8 @@ services:
         volumes:
             - app-data:${PGDATA}
     app-web:
-        image: ghost-web-dev
-        container_name: ghost-web-dev
+        image: ghost-app-web-dev
+        container_name: ghost-app-web-dev
         build:
             context: .
             dockerfile: django.Dockerfile

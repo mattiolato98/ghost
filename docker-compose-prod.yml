@@ -1,0 +1,64 @@
+services:
+  app-redis:
+    restart: always
+    image: redis:alpine
+    container_name: ${GHOST_REDIS_HOSTNAME}
+    ports:
+      - "6379:6379"
+  app-db:
+    restart: always
+    image: postgres:alpine
+    container_name: ${POSTGRES_HOSTNAME}
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - app-data:${PGDATA}
+  app-web:
+    restart: always
+    image: ${CI_REGISTRY_IMAGE}/app-web:${CI_IMAGE_TAG}
+    container_name: ghost-app-web-prod
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: django.Dockerfile
+    volumes:
+      - static-data:${GHOST_STATIC_FILE_FOLDER}
+    ports:
+      - "${GHOST_WEB_APP_PORT}:5000"
+    depends_on:
+      - app-db
+  app-celery:
+    restart: always
+    image: ${CI_REGISTRY_IMAGE}/app-celery:${CI_IMAGE_TAG}
+    container_name: plb-app-celery-prod
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: celery.Dockerfile
+    depends_on:
+      - app-db
+      - app-redis
+      - app-web
+  app-nginx:
+    restart: always
+    image: ${CI_REGISTRY_IMAGE}/app-nginx:${CI_IMAGE_TAG}
+    container_name: ghost-app-nginx-prod
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: nginx/nginx.Dockerfile
+    volumes:
+      - static-data:/vol/static
+    ports:
+      - "${GHOST_NGINX_PORT}:8080"
+    depends_on:
+      - app-web
+
+volumes:
+  app-data:
+  static-data:
