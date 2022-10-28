@@ -2,7 +2,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     background-color: #f2f2f2;
-    color: #525252;
+    color: #111827;
 }
 
 #site-main-page {
@@ -73,6 +73,10 @@ h5 {
     text-decoration-line: none !important;
 }
 
+.site-red-bg {
+    background-color: #FF6B6C !important;
+}
+
 .site-red-text {
     color: #FF6B6C !important;
 }
@@ -124,21 +128,31 @@ h5 {
 
 .path-link {
     padding: 0.25rem 0.5rem;
-    color: currentColor;
+    color: #111827;
     border-radius: 5px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
 }
 
 .path-link:hover {
-    color: currentColor;
     text-decoration: none;
+    color: #5e6b91 !important;
     background-color: rgba(0,0,0,.075);
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
 }
 
 .logo-font {
-    font-family: 'Patua One', cursive;
+    font-family: 'Epilogue', sans-serif;
 }
 
-.header-font {
+.subtitle-font {
     font-family: 'Solway', serif;
 }
 
