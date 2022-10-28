@@ -44,10 +44,10 @@
 
 <body>
 
+{% if user.is_authenticated %}
+    {% include 'navbar.html' %}
+{% endif %}
 <div id="site-main-page" class="container-fluid mt-lg-3">
-    {% if user.is_authenticated %}
-        {% include 'navbar.html' %}
-    {% endif %}
     {% block content %}
     {% endblock %}
 </div>

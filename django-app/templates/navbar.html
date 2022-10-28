@@ -1,10 +1,14 @@
-<nav class="navbar site-box mb-4">
-    <div class="container-fluid">
-        <span class="h1 logo-font site-red-text">Ghost</span>
-        <div class="d-flex justify-content-end">
-            <a href="{% url 'user_management:settings' %}" class="path-link">
+{% load static %}
+
+<nav class="navbar mb-5 site-red-bg">
+    <div class="row w-100 ms-1 p-2">
+        <div class="col d-flex align-items-center gap-4">
+            <img src="{% static 'img/ghost.png' %}" class="mb-2" style="width: 35px; height: auto;">
+            <span class="h1 logo-font font-9 text-white mb-0">Ghost</span>
+        </div>
+        <div class="col d-flex justify-content-end align-items-center pe-4">
+            <a href="{% url 'user_management:settings' %}" class="text-white">
                 <i class="fas fa-cog"></i>
-            </a>
             </a>
         </div>
     </div>
