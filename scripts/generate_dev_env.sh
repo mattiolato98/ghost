@@ -11,6 +11,7 @@ GHOST_WEB_APP_PORT=5000
 GHOST_APP_HOME="/home/app/web"
 GHOST_HOME="/home/app/"
 GHOST_WEB_DEV_PORT=8000
+GHOST_STATIC_FILE_FOLDER="/home/app/vol/static"
 POSTGRES_DB="django-db"
 POSTGRES_USER="django"
 POSTGRES_PASSWORD="mysecretpassword"
