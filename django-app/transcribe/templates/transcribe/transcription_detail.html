@@ -13,26 +13,26 @@
     <div class="row mb-5 gap-3">
         <div class="col">
             <div class="d-flex flex-column mb-3 d-sm-none">
-                <span class="text-muted header-font font-size-90">
+                <span class="text-muted subtitle-font font-size-90">
                     {% translate "Created" %}
                     {{ transcription_object.create_datetime|naturalday }}
                 </span>
-                <span class="text-muted header-font font-size-90">
+                <span class="text-muted subtitle-font font-size-90">
                     {% translate "Last edit" %}
                     {{ transcription_object.last_edit|naturalday }}
                 </span>
             </div>
-            <h2 class="header-font mb-0">{{ transcription_object.name }}</h2>
-            <h5 class="text-muted">{{ transcription_object.get_language_display|title }}</h5>
+            <h2 class="logo-font font-8 mb-0">{{ transcription_object.name }}</h2>
+            <h5 class="subtitle-font text-muted">{{ transcription_object.get_language_display|title }}</h5>
             <div>
                 {% if transcription_object.transcribed %}
                     <i class="fa-solid fa-check site-green-text mt-1"></i>
-                    <span class="site-green-text font-6 header-font">
+                    <span class="site-green-text font-6 subtitle-font">
                         {% translate "Successfully transcribed" %}
                     </span>
                 {% else %}
                     <div class="spinner-border spinner-border-sm site-blue-text mt-1" role="status"></div>
-                    <span class="site-blue-text font-6 header-font">
+                    <span class="site-blue-text font-6 subtitle-font">
                         {% translate "Processing audio" %}
                     </span>
                 {% endif %}
@@ -40,11 +40,11 @@
         </div>
         <div class="d-flex col-auto justify-content-start align-items-end flex-column">
             <div class="d-sm-flex flex-column align-items-end d-none">
-                <span class="text-muted header-font font-size-90">
+                <span class="text-muted subtitle-font font-size-90">
                     {% translate "Created" %}
                     {{ transcription_object.create_datetime|naturalday }}
                 </span>
-                    <span class="text-muted header-font font-size-90">
+                    <span class="text-muted subtitle-font font-size-90">
                     {% translate "Last edit" %}
                     {{ transcription_object.last_edit|naturalday }}
                 </span>
@@ -84,12 +84,12 @@
         <hr>
         <div class="row me-4">
             <div class="col">
-                <h3 class="header-font mb-0">{% translate 'Transcription' %}</h3>
+                <h3 class="logo-font font-6 mb-0">{% translate 'Transcription' %}</h3>
                 <hr id="transcription-header-hr" class="site-red-text mt-0">
             </div>
             <div class="col-auto d-flex align-items-center">
                 <a href="{% url 'transcribe:transcription-update' transcription_object.pk %}"
-                   class="site-blue-text font-7">
+                   class="site-blue-text logo-font font-7">
                     {% translate 'Open editor' %} >
                 </a>
             </div>
