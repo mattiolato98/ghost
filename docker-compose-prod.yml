@@ -23,7 +23,7 @@ services:
       - .env
     build:
       context: .
-      dockerfile: django.Dockerfile
+      dockerfile: django-app.Dockerfile
     volumes:
       - static-data:${GHOST_STATIC_FILES_FOLDER}
       - media-data:${GHOST_MEDIA_FILES_FOLDER}
@@ -34,12 +34,12 @@ services:
   app-celery:
     restart: always
     image: ${CI_REGISTRY_IMAGE}/app-celery:${CI_IMAGE_TAG}
-    container_name: plb-app-celery-prod
+    container_name: ghost-app-celery-prod
     env_file:
       - .env
     build:
       context: .
-      dockerfile: celery.Dockerfile
+      dockerfile: django-app.Dockerfile
     depends_on:
       - app-db
       - app-redis
