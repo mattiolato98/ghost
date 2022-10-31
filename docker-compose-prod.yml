@@ -55,7 +55,8 @@ services:
     volumes:
       - static-data:/vol/static
     ports:
-      - "${GHOST_NGINX_PORT}:8080"
+      - "${GHOST_NGINX_PORT}:80"
+      - "${GHOST_NGINX_HTTPS_PORT}:443"
     depends_on:
       - app-web
 
