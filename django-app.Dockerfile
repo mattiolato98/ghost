@@ -1,4 +1,4 @@
-# BUILDER 
+# BUILDER
 
 FROM python:3.10-alpine as builder
 
@@ -34,7 +34,7 @@ RUN pip install --no-cache /wheels/*
 
 COPY ./django-app $APP_HOME
 
-COPY ./scripts $HOME/scripts
+COPY scripts $HOME/scripts
 
 RUN mkdir -p $HOME/vol/static && \
     mkdir -p $HOME/vol/media && \
