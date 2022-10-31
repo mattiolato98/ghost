@@ -9,3 +9,4 @@ django-app/db.sqlite3
 .Trash-1000
 media/
 generate_prod_env.sh
+*.pem
