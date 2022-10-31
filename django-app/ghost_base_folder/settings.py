@@ -46,7 +46,8 @@ ALLOWED_HOSTS.extend(filter(None, os.environ.get('GHOST_ALLOWED_HOSTS', '').spli
 
 ADMINS = emails
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = []
+CSRF_TRUSTED_ORIGINS.extend(filter(None, os.environ.get('GHOST_CSRF_TRUSTED_ORIGINS', '').split(',')))
 
 
 # Application definition

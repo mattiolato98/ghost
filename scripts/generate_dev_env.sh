@@ -7,6 +7,7 @@ echo "WARNING: do not use this in production\n"
 cat > .dev.env << EOF
 DEBUG=1
 GHOST_ALLOWED_HOSTS="localhost,127.0.0.1"
+GHOST_CSRF_TRUSTED_ORIGINS="http://localhost:8000"
 GHOST_WEB_APP_PORT=5000
 GHOST_APP_HOME="/home/app/web"
 GHOST_HOME="/home/app/"
