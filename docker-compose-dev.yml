@@ -39,6 +39,7 @@ services:
     volumes:
       - ./django-app:${GHOST_APP_HOME}
       - media-data:${GHOST_MEDIA_FILES_FOLDER}
+    command: ["celery", "-A", "ghost_base_folder", "worker", "-l", "info"]
     depends_on:
       - app-web
       - app-db
