@@ -28,7 +28,7 @@ RUN mkdir $APP_HOME
 
 WORKDIR $APP_HOME
 
-RUN apk update && apk add libpq ffmpeg
+RUN apk update && apk add libpq ffmpeg icu-dev gettext gettext-dev
 COPY --from=builder /usr/src/app/wheels /wheels
 RUN pip install --no-cache /wheels/*
 
@@ -37,6 +37,7 @@ COPY ./django-app $APP_HOME
 COPY ./scripts $HOME/scripts
 
 RUN mkdir -p $HOME/vol/static && \
+    mkdir -p $HOME/vol/media && \
     chmod -R 755 $HOME/scripts && \
     chown -R app:app $HOME
 

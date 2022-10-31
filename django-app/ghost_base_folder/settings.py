@@ -163,7 +163,7 @@ STATIC_ROOT = os.environ.get('GHOST_STATIC_FILES_FOLDER')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.environ.get('GHOST_MEDIA_FILES_FOLDER')
 MEDIA_URL = '/media/'
 
 # Default primary key field type

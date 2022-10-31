@@ -37,6 +37,7 @@ COPY ./django-app $APP_HOME
 COPY ./scripts $HOME/scripts
 
 RUN mkdir -p $HOME/vol/static && \
+    mkdir -p $HOME/vol/media && \
     chmod -R 755 $HOME/scripts && \
     chown -R app:app $HOME
 

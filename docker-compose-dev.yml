@@ -23,6 +23,7 @@ services:
             - .dev.env
         volumes:
             - ./django-app:${GHOST_APP_HOME}
+            - media-data:${GHOST_MEDIA_FILES_FOLDER}
         ports:
             - "8000:8000"
         depends_on:
@@ -37,6 +38,7 @@ services:
             - .dev.env
         volumes:
             - ./django-app:${GHOST_APP_HOME}
+            - media-data:${GHOST_MEDIA_FILES_FOLDER}
         depends_on:
             - app-web
             - app-db
@@ -44,3 +46,4 @@ services:
 
 volumes:
     app-data:
+    media-data:

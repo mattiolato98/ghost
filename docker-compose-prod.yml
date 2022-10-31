@@ -26,6 +26,7 @@ services:
       dockerfile: django.Dockerfile
     volumes:
       - static-data:${GHOST_STATIC_FILES_FOLDER}
+      - media-data:${GHOST_MEDIA_FILES_FOLDER}
     ports:
       - "${GHOST_WEB_APP_PORT}:5000"
     depends_on:
@@ -63,3 +64,4 @@ services:
 volumes:
   app-data:
   static-data:
+  media-data:
