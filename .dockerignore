@@ -1,0 +1,23 @@
+# Docker
+django-app.Dockerfile
+nginx.Dockerfile
+docker-compose-dev.yml
+docker-compose-prod.yml
+
+# Environment
+venv
+*.md
+*__pycache__
+doc
+*.python-version
+db.sqlite3
+.idea/
+.gitlab-ci.yml
+
+# Git
+.git
+.gitignore
+
+# Application
+django-app/media
+scripts/generate_prod_env.sh
