@@ -46,7 +46,8 @@ ALLOWED_HOSTS.extend(filter(None, os.environ.get('GHOST_ALLOWED_HOSTS', '').spli
 
 ADMINS = emails
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = []
+CSRF_TRUSTED_ORIGINS.extend(filter(None, os.environ.get('GHOST_CSRF_TRUSTED_ORIGINS', '').split(',')))
 
 
 # Application definition
@@ -157,12 +158,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.environ.get('GHOST_STATIC_FILE_FOLDER')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.environ.get('GHOST_STATIC_FILES_FOLDER')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.environ.get('GHOST_MEDIA_FILES_FOLDER')
 MEDIA_URL = '/media/'
 
 # Default primary key field type

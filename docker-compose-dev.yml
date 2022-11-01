@@ -1,46 +1,50 @@
 services:
-    app-redis:
-        image: redis:alpine
-        container_name: ${GHOST_REDIS_HOSTNAME}
-        ports:
-            - "6379:6379"
-    app-db:
-        image: postgres:alpine
-        container_name: ${POSTGRES_HOSTNAME}
-        env_file:
-            - .dev.env
-        ports:
-            - "${POSTGRES_PORT}:5432"
-        volumes:
-            - app-data:${PGDATA}
-    app-web:
-        image: ghost-app-web-dev
-        container_name: ghost-app-web-dev
-        build:
-            context: .
-            dockerfile: django.Dockerfile
-        env_file:
-            - .dev.env
-        volumes:
-            - ./django-app:${GHOST_APP_HOME}
-        ports:
-            - "8000:8000"
-        depends_on:
-            - app-db
-    app-celery:
-        image: ghost-app-celery-dev
-        container_name: ghost-app-celery-dev
-        build:
-            context: .
-            dockerfile: celery.Dockerfile
-        env_file:
-            - .dev.env
-        volumes:
-            - ./django-app:${GHOST_APP_HOME}
-        depends_on:
-            - app-web
-            - app-db
-            - app-redis
+  app-redis:
+    image: redis:alpine
+    container_name: ${GHOST_REDIS_HOSTNAME}
+    ports:
+      - "6379:6379"
+  app-db:
+    image: postgres:alpine
+    container_name: ${POSTGRES_HOSTNAME}
+    env_file:
+      - .dev.env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - app-data:${PGDATA}
+  app-web:
+    image: ghost-app-web-dev
+    container_name: ghost-app-web-dev
+    build:
+      context: .
+      dockerfile: django-app.Dockerfile
+    env_file:
+      - .dev.env
+    volumes:
+      - ./django-app:${GHOST_APP_HOME}
+      - media-data:${GHOST_MEDIA_FILES_FOLDER}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - app-db
+  app-celery:
+    image: ghost-app-celery-dev
+    container_name: ghost-app-celery-dev
+    build:
+      context: .
+      dockerfile: django-app.Dockerfile
+    env_file:
+      - .dev.env
+    volumes:
+      - ./django-app:${GHOST_APP_HOME}
+      - media-data:${GHOST_MEDIA_FILES_FOLDER}
+    command: ["celery", "-A", "ghost_base_folder", "worker", "-l", "info"]
+    depends_on:
+      - app-web
+      - app-db
+      - app-redis
 
 volumes:
-    app-data:
+  app-data:
+  media-data:
