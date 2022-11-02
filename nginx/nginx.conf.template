@@ -18,7 +18,6 @@ server {
     listen ${GHOST_NGINX_HTTPS_PORT} ssl http2;
 	listen [::]:${GHOST_NGINX_HTTPS_PORT} ssl http2;
 	server_name soulscribe.ml;
-    # listen ${GHOST_NGINX_PORT} deferred;
 
     # SSL
 	ssl_certificate /etc/letsencrypt/live/soulscribe.ml/fullchain.pem;

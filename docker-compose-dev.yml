@@ -14,8 +14,8 @@ services:
     volumes:
       - app-data:${PGDATA}
   app-web:
-    image: ghost-app-web-dev
-    container_name: ghost-app-web-dev
+    image: ${GHOST_APP_WEB_NAME}
+    container_name: ${GHOST_APP_WEB_NAME}
     build:
       context: .
       dockerfile: django-app.Dockerfile
@@ -29,8 +29,8 @@ services:
     depends_on:
       - app-db
   app-celery:
-    image: ghost-app-celery-dev
-    container_name: ghost-app-celery-dev
+    image: ${GHOST_APP_CELERY_NAME}
+    container_name: ${GHOST_APP_CELERY_NAME}
     build:
       context: .
       dockerfile: django-app.Dockerfile

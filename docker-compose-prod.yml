@@ -18,7 +18,7 @@ services:
   app-web:
     restart: always
     image: ${CI_REGISTRY_IMAGE}/app-web:${CI_IMAGE_TAG}
-    container_name: ghost-app-web-prod
+    container_name: ${GHOST_APP_WEB_NAME}
     env_file:
       - .env
     build:
@@ -34,7 +34,7 @@ services:
   app-celery:
     restart: always
     image: ${CI_REGISTRY_IMAGE}/app-celery:${CI_IMAGE_TAG}
-    container_name: ghost-app-celery-prod
+    container_name: ${GHOST_APP_CELERY_NAME}
     env_file:
       - .env
     build:
@@ -50,7 +50,7 @@ services:
   app-nginx:
     restart: always
     image: ${CI_REGISTRY_IMAGE}/app-nginx:${CI_IMAGE_TAG}
-    container_name: ghost-app-nginx-prod
+    container_name: ${GHOST_APP_NGINX_NAME}
     env_file:
       - .env
     build:
