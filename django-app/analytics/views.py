@@ -3,7 +3,6 @@ import pytz
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 
@@ -35,5 +34,3 @@ class StatsTemplateView(TemplateView):
         context['inactive_users'] = get_user_model().objects.filter(is_active=False).count()
 
         return context
-
-
