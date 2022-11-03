@@ -13,11 +13,17 @@
 
 {% block col_main_content_classes %}d-flex flex-column{% endblock %}
 {% block main_content %}
+    <a href="{% url 'analytics:stats' %}" class="site-blue-text font-6 no-decoration">
+        <i class="fa-solid fa-chart-simple"></i> Analytics
+    </a>
+    <span class="text-muted font-5">
+        Platform analytics
+    </span>
+    <hr>
     <a href="{% url 'dashboard:token-list' %}" class="site-blue-text font-6 no-decoration">
         <i class="fa-solid fa-ticket"></i> Token
     </a>
     <span class="text-muted font-5">
         User sign in token
     </span>
-    <hr>
 {% endblock %}
