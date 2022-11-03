@@ -1,0 +1,55 @@
+{% extends 'base_box.html' %}
+
+{% block title %}{{ block.super }} Stats{% endblock %}
+
+{% block back_url %}
+    <a href="{% url 'dashboard:home' %}" class="font-6 path-link no-decoration">
+        <i class="fas fa-chevron-left mr-2"></i> Back
+    </a>
+    <a href="{% url 'transcribe:transcription-list' %}" class="path-link">
+        <i class="fa-solid fa-house"></i>
+    </a>
+{% endblock %}
+
+{% block box_title %}Analytics{% endblock %}
+{% block box_subtitle %}Platform stats{% endblock %}
+
+{% block main_content %}
+    <div class="d-flex justify-content-between">
+        <span class="h3 font-7">Users</span>
+        <div>
+            <span class="h3 font-7">{{ users }}</span>&nbsp;
+            <span class="h4 text-danger font-7">({{ unsubscribed_users }})</span>
+        </div>
+    </div>
+    <div class="list-group">
+        <div class="list-group-item py-3">
+            <div class="row">
+                <div class="col-md col-12 d-flex flex-column mr-md-5">
+                    <div class="d-flex justify-content-between">
+                        <span class="font-7 text-success">New subscribers last 7 days</span>
+                        <div>
+                            <span class="font-7">{{ subscribers_last_7_days }}</span>
+                            <span class="font-7 text-success">
+                                (+ {{ percent_increment_subscribers_last_7_days|floatformat:"0" }}%)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="font-7 text-success">Logged in last 7 days</span>
+                        <div>
+                            <span class="font-7">{{ logged_in_last_7_days }}</span>
+                            <span class="font-7 text-success">
+                                ({{ percent_logged_in_last_7_days|floatformat:"0" }}%)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="font-7 text-danger">Inactive users</span>
+                        <span>{{ inactive_users }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
