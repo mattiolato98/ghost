@@ -129,6 +129,11 @@ class CookiePolicyView(TemplateView):
     template_name = "user_management/cookie_policy.html"
 
 
+@method_decorator(not_authenticated_only, name='dispatch')
+class TokenRequestTemplateView(TemplateView):
+    template_name = 'user_management/token_request.html'
+
+
 def ajax_check_username_exists(request):
     return (
         JsonResponse({'exists': True})

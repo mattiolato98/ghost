@@ -1,0 +1,44 @@
+{% extends 'base_box.html' %}
+{% load i18n %}
+
+{% block title %}{{ block.super }} Token request{% endblock %}
+
+{% block back_url %}
+    <a href="{% url 'user_management:registration' %}" class="font-6 path-link no-decoration">
+        <i class="fas fa-chevron-left mr-2"></i>
+        {% translate "Back to Sign up" %}
+    </a>
+{% endblock %}
+
+{% block box_title %}{% translate 'Request a token' %}{% endblock %}
+{% block box_subtitle %}{% translate 'How to get a sign in token' %}{% endblock %}
+
+{% block main_content %}
+    <p>
+        <span class="font-6">
+            {% blocktranslate %}
+                You can become a free tester of the platform today.
+            {% endblocktranslate %}
+        </span>
+    </p>
+    <p class="d-flex flex-column">
+        <span>
+            {% blocktranslate %}
+                This will give you free access to a limited number of transcriptions.
+            {% endblocktranslate %}
+        </span>
+        <span>
+            {% blocktranslate %}
+                To get a token and become a beta tester, please write an email with "Token" as subject to:
+            {% endblocktranslate %}
+        </span>
+        <span class="site-blue-text font-7 link-decorated">soulscribeai@gmail.com</span>
+    </p>
+    <p>
+        <span>
+            {% blocktranslate %}
+                We will provide you a valid token as soon as possible.
+            {% endblocktranslate %}
+        </span>
+    </p>
+{% endblock %}

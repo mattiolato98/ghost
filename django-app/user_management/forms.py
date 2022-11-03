@@ -22,6 +22,7 @@ class PlatformUserCreationForm(UserCreationForm):
 
         privacy_policy_url = reverse_lazy('user_management:privacy-policy')
         cookie_policy_url = reverse_lazy('user_management:cookie-policy')
+        token_request_url = reverse_lazy('user_management:token-request')
 
         self.fields['privacy_and_cookie_policy_acceptance'].label = mark_safe(_(
             "I agree with the <strong><a href='{}' target='_blank' class='site-link'>"
@@ -29,6 +30,10 @@ class PlatformUserCreationForm(UserCreationForm):
             "with our <strong><a href='{}' target='_blank' class='site-link'>cookie "
             "policy</a></strong>, in order to allow the proper operation of the app"
         ).format(privacy_policy_url, cookie_policy_url))
+
+        self.fields['token'].help_text = mark_safe(_(
+            '<a href="{}" class="site-link link-decorated">I don\'t have a token</a>'
+        ).format(token_request_url))
 
         self.helper.layout = Layout(
             Row(
