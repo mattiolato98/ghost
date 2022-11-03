@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local
+    'dashboard',
     'transcribe',
     'user_management',
 

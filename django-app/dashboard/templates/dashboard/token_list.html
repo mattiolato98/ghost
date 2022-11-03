@@ -1,0 +1,35 @@
+{% extends 'base_box.html' %}
+
+{% block title %}{{ block.super }} Tokens{% endblock %}
+
+{% block back_url %}
+    <a href="{% url 'dashboard:home' %}" class="font-6 path-link no-decoration">
+        <i class="fas fa-chevron-left mr-2"></i> Back
+    </a>
+{% endblock %}
+
+{% block box_title %}Tokens{% endblock %}
+{% block box_subtitle %}User sign in tokens{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <a href="{% url 'dashboard:generate-token' %}" class="btn site-btn">Generate new token</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% for signin_token in signin_tokens %}
+                <div class="d-flex flex-column">
+                    <span class="font-6">{{ signin_token.token }}</span>
+                    {% if signin_token.is_active %}
+                        <span class="site-green-text font-7">Active</span>
+                    {% else %}
+                        <span class="site-red-text font-7">Used</span>
+                    {% endif %}
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
