@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+
+class Stats(models.Model):
+    unsubscribed_users = models.IntegerField(default=0)
