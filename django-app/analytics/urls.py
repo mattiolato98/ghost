@@ -4,5 +4,5 @@ from analytics import views
 app_name = 'analytics'
 
 urlpatterns = [
-    path('stats', views.StatsView.as_view(), name='stats'),
+    path('stats', views.StatsTemplateView.as_view(), name='stats'),
 ]
