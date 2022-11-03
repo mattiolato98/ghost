@@ -49,7 +49,7 @@ class RegistrationView(CreateView):
         token.save()
 
         self.object = form.save(commit=False)
-        
+
         response = super(RegistrationView, self).form_valid(form)
 
         mail_subject = 'Conferma la tua email | Ghost'
