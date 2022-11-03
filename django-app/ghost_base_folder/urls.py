@@ -26,6 +26,7 @@ urlpatterns = [
     admin_url.path,
     path('tinymce/', include('tinymce.urls')),
     path('', views.HomeTemplateView.as_view(), name='home'),
+    path('analytics/', include('analytics.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('transcribe/', include('transcribe.urls')),
     path('user/', include('user_management.urls')),
