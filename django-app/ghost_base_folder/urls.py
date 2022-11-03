@@ -15,15 +15,15 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib import admin
 from django.urls import path, include
 
+from . import admin_url
 from . import views
 from . import settings
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    admin_url.path,
     path('tinymce/', include('tinymce.urls')),
     path('', views.HomeTemplateView.as_view(), name='home'),
     path('transcribe/', include('transcribe.urls')),
