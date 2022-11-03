@@ -13,6 +13,7 @@ from django.utils.translation import gettext_lazy as _
 class PlatformUserCreationForm(UserCreationForm):
     helper = FormHelper()
     email = forms.EmailField(required=True)
+    token = forms.CharField(label=_('Token'), required=True, max_length=16)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -38,6 +39,10 @@ class PlatformUserCreationForm(UserCreationForm):
             Row(
                 Column(FloatingField('password1'), css_class='form-group'),
                 Column(FloatingField('password2'), css_class='form-group'),
+                css_class='form-row',
+            ),
+            Row(
+                Column(FloatingField('token'), css_class='form-group col-6'),
                 css_class='form-row',
             ),
             Row(

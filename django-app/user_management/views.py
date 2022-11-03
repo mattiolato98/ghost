@@ -14,6 +14,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_GET
 from django.views.generic import TemplateView, CreateView, DeleteView, UpdateView
 
+from dashboard.models import SignInToken
 from user_management.decorators import not_authenticated_only
 from user_management.forms import LoginForm, PlatformUserCreationForm, UpdatePasswordForm
 from user_management.models import PlatformUser
@@ -35,8 +36,20 @@ class RegistrationView(CreateView):
     success_url = reverse_lazy('user_management:email-verification-needed')
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
+        try:
+            token = SignInToken.objects.get(
+                token=form.cleaned_data['token'],
+                is_active=True,
+            )
+        except SignInToken.DoesNotExist:
+            form.add_error('token', error=_('Invalid token.'))
+            return self.form_invalid(form)
 
+        token.is_active = False
+        token.save()
+
+        self.object = form.save(commit=False)
+        
         response = super(RegistrationView, self).form_valid(form)
 
         mail_subject = 'Conferma la tua email | Ghost'
