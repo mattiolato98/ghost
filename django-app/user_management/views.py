@@ -14,6 +14,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_GET
 from django.views.generic import TemplateView, CreateView, DeleteView, UpdateView
 
+from analytics.models import Stats
 from dashboard.models import SignInToken
 from user_management.decorators import not_authenticated_only
 from user_management.forms import LoginForm, PlatformUserCreationForm, UpdatePasswordForm
@@ -107,6 +108,12 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         """Avoid passing users' primary keys in the URL"""
         return self.request.user
+
+    def post(self, request, *args, **kwargs):
+        stats = Stats.objects.first()
+        stats.unsubscribed_users += 1
+        stats.save()
+        return super(UserDeleteView, self).post(request, *args, **kwargs)
 
 
 class EmailVerificationNeededView(TemplateView):
