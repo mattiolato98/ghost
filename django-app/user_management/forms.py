@@ -42,7 +42,7 @@ class PlatformUserCreationForm(UserCreationForm):
                 css_class='form-row',
             ),
             Row(
-                Column(FloatingField('token'), css_class='form-group col-6'),
+                Column(FloatingField('token'), css_class='form-group col-lg-6 col-12'),
                 css_class='form-row',
             ),
             Row(
