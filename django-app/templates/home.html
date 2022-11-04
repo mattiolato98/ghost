@@ -1,22 +1,50 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}
     {{ block.super }} Home
 {% endblock %}
 
+{% block extra_css %}
+    <style>
+        #site-main-page {
+            margin-top: 0 !important;
+            padding-right: 6rem !important;
+            height: 100vh !important;
+        }
+        #background-column {
+            background: url("/static/img/DALLE-robot.png") no-repeat center center;
+            width: 100vw;
+            min-height: 100vh;
+            height: inherit;
+            background-size: cover;
+        }
+        p {
+            text-shadow: 2px 2px #e18484;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-    {% translate 'Transcription is one step away' %}.
-    <a class="btn btn-info" href="{% url 'transcribe:transcription-form' %}">
-        Transcribe
-    </a>
-    <a class="btn btn-info" href="{% url 'user_management:registration' %}">
-        Sign in
-    </a>
-    <a class="btn btn-info" href="{% url 'user_management:login' %}">
-        Log in
-    </a>
-    <a class="btn btn-info" href="{% url 'user_management:logout' %}">
-        Log out
-    </a>
+    <div class="row justify-content-center">
+        <div id="background-column" class="col"></div>
+        <div class="col d-flex align-items-end flex-column mt-5">
+            <p class="d-flex flex-column logo-font display-1 font-8 site-red-text text-end">
+                {% blocktranslate %}
+                    <span>Transcription</span>
+                    <span>is one step</span>
+                    <span>away</span>
+                {% endblocktranslate %}
+            </p>
+            <div class="d-flex flex-column mt-5 gap-3">
+                <a class="btn site-btn btn-lg" href="{% url 'user_management:login' %}">
+                    Login
+                </a>
+                <a class="path-link no-decoration font-6" href="{% url 'user_management:registration' %}">
+                    Don't have an account yet? Sign in
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
