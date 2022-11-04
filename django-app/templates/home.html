@@ -10,11 +10,11 @@
     <style>
         #site-main-page {
             margin-top: 0 !important;
-            padding-right: 6rem !important;
+            padding-right: 4rem !important;
             height: 100vh !important;
         }
         #background-column {
-            background: url("/static/img/DALLE-robot.png") no-repeat center center;
+            background: url("/static/img/DALLE-robot.png") no-repeat right center;
             width: 100vw;
             min-height: 100vh;
             height: inherit;
@@ -23,14 +23,23 @@
         p {
             text-shadow: 2px 2px #e18484;
         }
+
+        @media (max-width: 991px) {
+            #background-column {
+                display: none !important;
+            }
+            #site-main-page {
+                padding-right: 0 !important;
+            }
+        }
     </style>
 {% endblock %}
 
 {% block content %}
     <div class="row justify-content-center">
         <div id="background-column" class="col"></div>
-        <div class="col d-flex align-items-end flex-column mt-5">
-            <p class="d-flex flex-column logo-font display-1 font-8 site-red-text text-end">
+        <div class="col d-flex align-items-end align-items-mobile-center flex-column mt-5">
+            <p class="d-flex flex-column logo-font display-1 font-8 site-red-text text-end text-mobile-center">
                 {% blocktranslate %}
                     <span>Transcription</span>
                     <span>is one step</span>
