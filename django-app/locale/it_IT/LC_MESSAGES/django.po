@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 20:21+0000\n"
+"POT-Creation-Date: 2022-11-04 16:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/home.html:9
-msgid "Transcription is one step away"
-msgstr "La trascrizione è a un passo"
+#: templates/home.html:34
+msgid ""
+"\n"
+"                    <span>Transcription</span>\n"
+"                    <span>is one step</span>\n"
+"                    <span>away</span>\n"
+"                "
+msgstr ""
+"\n"
+"                    <span>La trascrizione</span>\n"
+"                    <span>è a un</span>\n"
+"                    <span>passo</span>\n"
+"                "
 
 #: transcribe/forms.py:30
 msgid "Transcribe"
@@ -220,11 +230,15 @@ msgstr "Elimina trascrizione"
 msgid "Edit the transcription"
 msgstr "Elimina questa trascrizione"
 
-#: transcribe/views.py:26
+#: transcribe/views.py:28
 msgid "Only audio file supported. Please try again with an audio file."
 msgstr "Perfavore inserisci un file audio."
 
-#: user_management/forms.py:26
+#: user_management/forms.py:16
+msgid "Token"
+msgstr "Token"
+
+#: user_management/forms.py:28
 msgid ""
 "I agree with the <strong><a href='{}' target='_blank' class='site-"
 "link'>privacy policy</a></strong> and the use of essential cookies, "
@@ -238,15 +252,21 @@ msgstr ""
 "class='site-link'>cookie policy</a></strong>, per consentire il normale "
 "funzionamento dell'app"
 
-#: user_management/forms.py:51
+#: user_management/forms.py:35
+msgid ""
+"<a href=\"{}\" class=\"site-link link-decorated\">I don't have a token</a>"
+msgstr ""
+"<a href=\"{}\" class=\"site-link link-decorated\">Non possiedo un token</a>"
+
+#: user_management/forms.py:61
 msgid "You must accept the privacy policies."
 msgstr "Devi accettare le politiche sul trattamento dei dati."
 
-#: user_management/forms.py:87
+#: user_management/forms.py:97
 msgid "Old password"
 msgstr "Password attuale"
 
-#: user_management/forms.py:106
+#: user_management/forms.py:116
 #: user_management/templates/user_management/password_update.html:5
 #: user_management/templates/user_management/password_update.html:14
 #: user_management/templates/user_management/settings.html:28
@@ -380,6 +400,62 @@ msgstr ""
 "informazioni\n"
 "                        "
 
+#: user_management/templates/user_management/token_request.html:9
+msgid "Back to Sign up"
+msgstr "Torna alla registrazione"
+
+#: user_management/templates/user_management/token_request.html:13
+msgid "Request a token"
+msgstr "Richiedi un token"
+
+#: user_management/templates/user_management/token_request.html:14
+msgid "How to get a sign in token"
+msgstr "Come ottenere un token di registrazione"
+
+#: user_management/templates/user_management/token_request.html:19
+msgid ""
+"\n"
+"                You can become a free tester of the platform today.\n"
+"            "
+msgstr ""
+"\n"
+"                Puoi diventare un tester della piattaforma oggi stesso.\n"
+"            "
+
+#: user_management/templates/user_management/token_request.html:26
+msgid ""
+"\n"
+"                This will give you free access to a limited number of "
+"transcriptions.\n"
+"            "
+msgstr ""
+"\n"
+"                Questo ti permetterà di eseguire gratuitamente un numero "
+"limitato di trascrizioni.\n"
+"            "
+
+#: user_management/templates/user_management/token_request.html:31
+msgid ""
+"\n"
+"                To get a token and become a beta tester, please write an "
+"email with \"Token\" as subject to:\n"
+"            "
+msgstr ""
+"\n"
+"                Per ottenere un token e diventare un beta tester, scrivi "
+"un'email con \"Token\" come oggetto a:\n"
+"            "
+
+#: user_management/templates/user_management/token_request.html:39
+msgid ""
+"\n"
+"                We will provide you a valid token as soon as possible.\n"
+"            "
+msgstr ""
+"\n"
+"                Ti forniremo un token valido il prima possibile.\n"
+"            "
+
 #: user_management/templates/user_management/user_ajax.html:23
 msgid "Someone stole this username. Damn!."
 msgstr "Qualcuno ha rubato questo username. Accidenti!"
@@ -408,11 +484,15 @@ msgstr "Tutti i tuoi dati saranno distrutti e non potrai più recuperarli."
 msgid "For confirmation, enter your username:"
 msgstr "Per conferma, inserisci il tuo username:"
 
-#: user_management/views.py:85
+#: user_management/views.py:46
+msgid "Invalid token."
+msgstr "Token non valido."
+
+#: user_management/views.py:99
 msgid "The old password is not correct"
 msgstr "La password attuale non è corretta"
 
-#: user_management/views.py:152
+#: user_management/views.py:177
 #, python-brace-format
 msgid ""
 "Error. Attempt to validate email for the user {user_id_b64} with token "
@@ -421,6 +501,6 @@ msgstr ""
 "Errore. Tentativo di valida l'email per l'utente {user_id_b64} con il token "
 "{user_token}"
 
-#: user_management/views.py:153
+#: user_management/views.py:178
 msgid "Authentication error"
 msgstr "Errore di autenticazione"
