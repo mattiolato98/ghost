@@ -9,4 +9,10 @@
     .align-items-mobile-start {
         align-items: start !important;
     }
+    .align-items-mobile-center {
+        align-items: center !important;
+    }
+    .text-mobile-center {
+        text-align: center !important;
+    }
 }
