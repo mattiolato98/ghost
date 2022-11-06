@@ -1,0 +1,54 @@
+image: docker/compose:1.29.2
+
+variables:
+  DOCKER_DRIVER: overlay2
+  # Create the certificates inside this directory for both the server
+  # and client. The certificates used by the client will be created in
+  # /certs/client, so we only need to share this directory with the
+  # volume mount in `config.toml`.
+  DOCKER_TLS_CERTDIR: ""
+
+services:
+  - docker:19.03.12-dind
+
+stages:
+  - build
+  - test
+  - release
+  - deploy
+
+before_script:
+ - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+ - env | grep GHOST_ > .env
+ - env | grep POSTGRES_ >> .env
+
+build:
+  stage: build
+  variables:
+    CI_IMAGE_TAG: "development"
+  script:
+    - echo "---------------- BUILD STAGE ----------------"
+    - docker-compose -f docker-compose-prod.yml build --pull --quiet
+    - docker-compose -f docker-compose-prod.yml push
+
+test:
+  stage: test
+  variables:
+    CI_IMAGE_TAG: "development"
+  script:
+    - echo "---------------- TEST STAGE ----------------"
+    - docker-compose -f docker-compose-prod.yml pull --quiet
+    - echo "Pull completed, now the tests will be executed!"
+    - docker-compose -f docker-compose-prod.yml run --rm app-web
+      sh -c "python manage.py wait_for_db && python manage.py migrate && python manage.py test"
+
+deploy:
+  stage: deploy
+  variables:
+    CI_IMAGE_TAG: "latest"
+  script:
+    - echo "---------------- RELEASE STAGE ----------------"
+    - docker-compose -f docker-compose-prod.yml build --pull --quiet
+    - docker-compose -f docker-compose-prod.yml push
+  only:
+    - main
