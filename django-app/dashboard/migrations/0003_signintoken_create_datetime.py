@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='signintoken',
             name='create_datetime',
-            field=models.DateTimeField(auto_now_add=True, default='2022-01-01 10:10'),
+            field=models.DateTimeField(auto_now_add=True),
             preserve_default=False,
         ),
     ]
