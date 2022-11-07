@@ -21,6 +21,24 @@
                     {% translate "Last edit" %}
                     {{ transcription_object.last_edit|naturalday }}
                 </span>
+                {% with days_to_expiration=transcription_object.days_to_expiration %}
+                        <span class="badge rounded-pill
+                            {% if days_to_expiration > 5 %}
+                                site-pill
+                            {% elif days_to_expiration > 2 %}
+                                bg-warning
+                            {% else %}
+                                bg-danger
+                            {% endif %}
+                        t-2">
+                            {% translate 'Expires in' %} {{ days_to_expiration }}
+                            {% if days_to_expiration > 1 %}
+                                {% translate 'days' %}
+                            {% else %}
+                                {% translate 'day' %}
+                            {% endif %}
+                        </span>
+                    {% endwith %}
             </div>
             <h2 class="logo-font font-8 mb-0">{{ transcription_object.name }}</h2>
             <h5 class="subtitle-font text-muted">{{ transcription_object.get_language_display|title }}</h5>
@@ -41,12 +59,32 @@
         <div class="d-flex col-auto justify-content-start align-items-end flex-column">
             <div class="d-sm-flex flex-column align-items-end d-none">
                 <span class="text-muted subtitle-font font-size-90">
-                    {% translate "Created" %}
+                    {% translate 'Created' %}
                     {{ transcription_object.create_datetime|naturalday }}
                 </span>
                     <span class="text-muted subtitle-font font-size-90">
-                    {% translate "Last edit" %}
+                    {% translate 'Last edit' %}
                     {{ transcription_object.last_edit|naturalday }}
+                </span>
+                <span>
+                    {% with days_to_expiration=transcription_object.days_to_expiration %}
+                        <span class="badge rounded-pill
+                            {% if days_to_expiration > 5 %}
+                                site-pill
+                            {% elif days_to_expiration > 2 %}
+                                bg-warning
+                            {% else %}
+                                bg-danger
+                            {% endif %}
+                        t-2">
+                            {% translate 'Expires in' %} {{ days_to_expiration }}
+                            {% if days_to_expiration > 1 %}
+                                {% translate 'days' %}
+                            {% else %}
+                                {% translate 'day' %}
+                            {% endif %}
+                        </span>
+                    {% endwith %}
                 </span>
             </div>
             <div class="mt-sm-4">

@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 import mutagen
+import pytz
 from django.contrib.auth import get_user_model
 from django.utils import formats
 from googletrans import LANGUAGES
@@ -99,6 +100,14 @@ class Transcription(models.Model):
             return os.path.basename(self.audio.name).rsplit('.', 1)[0]
 
         return os.path.basename(self.audio.name)
+
+    @property
+    def expiration_datetime(self):
+        return self.create_datetime + datetime.timedelta(days=14)
+
+    @property
+    def days_to_expiration(self):
+        return (self.expiration_datetime - datetime.datetime.now(tz=pytz.UTC)).days
 
     def create_audio_path(self, filename):
         """Creates an os path for a new transcription's audio."""
