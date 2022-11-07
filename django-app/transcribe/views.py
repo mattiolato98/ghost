@@ -1,10 +1,7 @@
-import os.path
-
 import celery
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import mail_admins
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
@@ -24,32 +21,31 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('transcribe:transcription-list')
 
     def form_valid(self, form):
+        """This function performs the following tasks:
+        - testing if the uploaded file is an audio or not;
+        - sending an email to the admins when a new audio is uploaded;
+        - converting an audio file to MP3 if needed;
+        """
         def not_audio_raise_error():
-            not_audio_file_error_msg = _('Only audio file supported. Please try again with an audio file.')
+            not_audio_file_error_msg = _(
+                'Only audio file supported. Please try again with an audio file.'
+            )
             form.add_error("audio", error=not_audio_file_error_msg)
             return self.form_invalid(form)
 
-        def send_notification():
-            subject = 'New audio uploaded'
-            msg = (
-                f'New audio uploaded by {self.object.user.username}.\n'
-                f'- Name: {self.object.name}\n'
-                f'- Language: {self.object.language}\n'
-                f'- Audio duration: {self.object.readable_duration}\n'
-                f'- Audio: http://localhost:8000/admin/transcribe/transcription/{self.object.pk}/change/'
-            )
-
-            mail_admins(
-                subject,
-                msg,
-            )
-
+        # depending on the file size, the audio can be temporarily
+        # stored in a temporary file or in memory, so both the two
+        # conditions should be handled:
         try:
-            is_audio, audio_format = audio_utils.audio_info(form.cleaned_data['audio'].temporary_file_path())
+            is_audio, audio_format = audio_utils.audio_info(
+                form.cleaned_data['audio'].temporary_file_path()
+            )
             if not is_audio:
                 return not_audio_raise_error()
         except AttributeError:
-            is_audio, audio_format = audio_utils.audio_info(form.cleaned_data['audio'].file, in_memory=True)
+            is_audio, audio_format = audio_utils.audio_info(
+                form.cleaned_data['audio'].file, in_memory=True
+            )
             if not is_audio:
                 return not_audio_raise_error()
 
@@ -59,8 +55,10 @@ class TranscriptionCreateView(LoginRequiredMixin, CreateView):
 
         self.object = form.save()
 
-        send_notification()
-
+        celery.current_app.send_task(
+            'transcribe.tasks.async_send_notification',
+            args=(self.object.pk,),
+        )
         if not form.instance.is_mp3:
             celery.current_app.send_task(
                 'transcribe.tasks.async_audio_conversion',

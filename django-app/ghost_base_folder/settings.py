@@ -185,3 +185,5 @@ LOGIN_URL = '/user/login'
 LOGIN_REDIRECT_URL = '/transcribe/list'
 
 LOGOUT_REDIRECT_URL = '/user/login'
+
+SITE_URL = 'https://soulscribe.ml' if not DEBUG else 'http://localhost:8000'
