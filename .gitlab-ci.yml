@@ -26,8 +26,11 @@ build:
   stage: build
   variables:
     CI_IMAGE_TAG: "development"
+    SECURE_FILES_DOWNLOAD_PATH: './django-app/ghost_base_folder/'
   script:
     - echo "---------------- BUILD STAGE ----------------"
+    - apk add --no-cache curl bash
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/load-secure-files/-/raw/main/installer" | bash
     - docker-compose -f docker-compose-prod.yml build --pull --quiet
     - docker-compose -f docker-compose-prod.yml push
 
@@ -46,8 +49,11 @@ deploy:
   stage: deploy
   variables:
     CI_IMAGE_TAG: "latest"
+    SECURE_FILES_DOWNLOAD_PATH: './django-app/ghost_base_folder/'
   script:
     - echo "---------------- RELEASE STAGE ----------------"
+    - apk add --update curl bash
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/load-secure-files/-/raw/main/installer" | bash
     - docker-compose -f docker-compose-prod.yml build --pull --quiet
     - docker-compose -f docker-compose-prod.yml push
   only:
