@@ -53,7 +53,7 @@ class RegistrationView(CreateView):
 
         response = super(RegistrationView, self).form_valid(form)
 
-        mail_subject = 'Conferma la tua email | Ghost'
+        mail_subject = 'Conferma la tua email | Soulscribe'
         relative_confirm_url = reverse(
             'user_management:verify-user-email',
             args=[
@@ -65,10 +65,10 @@ class RegistrationView(CreateView):
         self.object.email_user(
             subject=mail_subject,
             message=(f'''Ciao {self.object.username}\n'''
-                     + '''Ti diamo il benvenuto in Ghost!\n'''
+                     + '''Ti diamo il benvenuto in Soulscribe!\n'''
                      + '''\nConferma la tua email:'''
                      + f'''\n{self.request.build_absolute_uri(relative_confirm_url)}\n'''
-                     + '''\nA presto, \nGhost Team''')
+                     + '''\nA presto, \nSoulscribe Team''')
         )
 
         self.object.token_sent = True
