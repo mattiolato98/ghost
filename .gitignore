@@ -11,3 +11,4 @@ django-app/db.sqlite3
 media/
 generate_prod_env.sh
 *.pem
+django-app/celerybeat-schedule
