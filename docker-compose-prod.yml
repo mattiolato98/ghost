@@ -17,7 +17,7 @@ services:
       - app-data:${PGDATA}
   app-web:
     restart: always
-    image: ${CI_REGISTRY_IMAGE}/app-web:${CI_IMAGE_TAG}
+    image: ${CI_REGISTRY_IMAGE}/app-django:${CI_IMAGE_TAG}
     container_name: ${GHOST_APP_WEB_NAME}
     env_file:
       - .env
@@ -33,7 +33,7 @@ services:
       - app-db
   app-celery:
     restart: always
-    image: ${CI_REGISTRY_IMAGE}/app-celery:${CI_IMAGE_TAG}
+    image: ${CI_REGISTRY_IMAGE}/app-django:${CI_IMAGE_TAG}
     container_name: ${GHOST_APP_CELERY_NAME}
     env_file:
       - .env

@@ -14,7 +14,7 @@ services:
     volumes:
       - app-data:${PGDATA}
   app-web:
-    image: ${GHOST_APP_WEB_NAME}
+    image: ${GHOST_APP_IMAGE}
     container_name: ${GHOST_APP_WEB_NAME}
     build:
       context: .
@@ -29,7 +29,7 @@ services:
     depends_on:
       - app-db
   app-celery:
-    image: ${GHOST_APP_CELERY_NAME}
+    image: ${GHOST_APP_IMAGE}
     container_name: ${GHOST_APP_CELERY_NAME}
     build:
       context: .

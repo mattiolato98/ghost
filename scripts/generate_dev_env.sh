@@ -23,4 +23,5 @@ POSTGRES_PORT=5432
 POSTGRES_HOSTNAME="ghost-app-db"
 PGDATA=/var/lib/postgresql/data
 GHOST_REDIS_HOSTNAME="ghost-app-redis"
+GHOST_APP_IMAGE="ghost-app"
 EOF
