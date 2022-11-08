@@ -31,3 +31,8 @@ def async_send_notification(transcription_pk):
         subject,
         msg,
     )
+
+
+@shared_task(ignore_result=True)
+def async_transcriptions_deletion():
+    Transcription.delete_expired_transcriptions()

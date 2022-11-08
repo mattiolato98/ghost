@@ -1,6 +1,7 @@
 import os
 
 from celery import Celery
+from celery.schedules import crontab
 
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ghost_base_folder.settings')
@@ -15,6 +16,15 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # Load task modules from all registered Django apps.
 app.autodiscover_tasks()
+
+
+app.conf.beat_schedule = {
+    # Execute daily at midnight
+    'executes-every-minute': {
+        'task': 'transcribe.tasks.async_transcriptions_deletion',
+        'schedule': crontab(minute=0, hour=0),
+    },
+}
 
 
 @app.task(bind=True)

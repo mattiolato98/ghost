@@ -44,6 +44,22 @@ services:
       - app-web
       - app-db
       - app-redis
+  app-celery-beat:
+    image: ${GHOST_APP_IMAGE}
+    container_name: ${GHOST_APP_CELERY_BEAT_NAME}
+    build:
+      context: .
+      dockerfile: django-app.Dockerfile
+    env_file:
+      - .dev.env
+    volumes:
+      - ./django-app:${GHOST_APP_HOME}
+      - media-data:${GHOST_MEDIA_FILES_FOLDER}
+    command: [ "celery", "-A", "ghost_base_folder", "beat", "-l", "info" ]
+    depends_on:
+      - app-web
+      - app-db
+      - app-redis
 
 volumes:
   app-data:

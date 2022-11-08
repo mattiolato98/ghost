@@ -72,6 +72,15 @@ class Transcription(models.Model):
 
         super(Transcription, self).save(*args, **kwargs)
 
+    @classmethod
+    def delete_expired_transcriptions(cls):
+        """Asynchronous function that removes all the transcriptions
+        objects which expiration date is, actually, expired.
+        """
+        for obj in cls.objects.all():
+            if obj.days_to_expiration <= 0:
+                obj.delete()
+
     @property
     def readable_duration(self):
         return formats.time_format(datetime.datetime.fromtimestamp(self.duration), 'H:i:s')
