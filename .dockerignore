@@ -21,3 +21,4 @@ db.sqlite3
 # Application
 django-app/media
 scripts/generate_prod_env.sh
+django-app/celerybeat-schedule
