@@ -46,9 +46,10 @@ ALLOWED_HOSTS.extend(filter(None, os.environ.get('GHOST_ALLOWED_HOSTS', '').spli
 
 ADMINS = emails
 
+# SECURITY SETTINGS
 CSRF_TRUSTED_ORIGINS = []
 CSRF_TRUSTED_ORIGINS.extend(filter(None, os.environ.get('GHOST_CSRF_TRUSTED_ORIGINS', '').split(',')))
-
+CSRF_COOKIE_SECURE = True
 
 # Application definition
 
@@ -60,13 +61,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # local
     'analytics',
     'dashboard',
     'transcribe',
     'user_management',
-
     # 3d party
     'crispy_forms',
     'crispy_bootstrap5',
