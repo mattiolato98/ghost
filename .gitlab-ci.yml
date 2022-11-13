@@ -32,6 +32,7 @@ build:
     - apk add --no-cache ruby ruby-json git
     - git clone https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/load-secure-files.git
     - ruby ./load-secure-files/load.rb
+    - mv django-app/ghost_base_folder/*.pem nginx/
     - docker-compose -f docker-compose-prod.yml build --pull --quiet
     - docker-compose -f docker-compose-prod.yml push
 
