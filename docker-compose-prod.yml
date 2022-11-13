@@ -71,6 +71,9 @@ services:
       - .env
     build:
       context: .
+      args:
+        GHOST_FULLCHAIN_PEM: ${GHOST_FULLCHAIN_PEM}
+        GHOST_PRIVKEY_PEM: ${GHOST_PRIVKEY_PEM}
       dockerfile: nginx/nginx.Dockerfile
     volumes:
       - static-data:/vol/static

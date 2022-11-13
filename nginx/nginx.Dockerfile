@@ -1,8 +1,11 @@
 FROM nginx
 
-COPY ${GHOST_FULLCHAIN_PEM} /etc/letsencrypt/live/soulscribe.ml/
+ARG GHOST_FULLCHAIN_PEM
+ARG GHOST_PRIVKEY_PEM
 
-COPY ${GHOST_PRIVKEY_PEM} /etc/letsencrypt/live/soulscribe.ml/
+COPY $GHOST_FULLCHAIN_PEM /etc/letsencrypt/live/soulscribe.ml/
+
+COPY $GHOST_PRIVKEY_PEM /etc/letsencrypt/live/soulscribe.ml/
 
 COPY ./nginx/nginx.conf.template /etc/nginx/templates/nginx.conf.template
 
