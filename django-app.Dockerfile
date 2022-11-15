@@ -7,14 +7,15 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY ./django-app/requirements.txt .
-
 RUN apk add --update --no-cache --virtual .tmp-deps \
-        postgresql-dev gcc python3-dev musl-dev build-base libffi-dev linux-headers && \
-    pip install --upgrade pip && \
-    pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt && \
-    apk del .tmp-deps
+        postgresql-dev gcc python3-dev musl-dev build-base libffi-dev linux-headers
 
+RUN pip install --upgrade pip
+
+COPY ./django-app/requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+RUN apk del .tmp-deps
 
 # DJANGO IMAGE
 
