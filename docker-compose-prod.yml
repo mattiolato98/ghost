@@ -3,16 +3,16 @@ services:
     restart: always
     image: redis:alpine
     container_name: ${GHOST_REDIS_HOSTNAME}
-    ports:
-      - "6379:6379"
+    expose:
+      - "6379"
   app-db:
     restart: always
     image: postgres:14-alpine
     container_name: ${POSTGRES_HOSTNAME}
     env_file:
       - .env
-    ports:
-      - "${POSTGRES_PORT}:5432"
+    expose:
+      - "${POSTGRES_PORT}"
     volumes:
       - app-data:${PGDATA}
   app-web:
@@ -27,8 +27,8 @@ services:
     volumes:
       - static-data:${GHOST_STATIC_FILES_FOLDER}
       - media-data:${GHOST_MEDIA_FILES_FOLDER}
-    ports:
-      - "${GHOST_WEB_APP_PORT}:5000"
+    expose:
+      - "${GHOST_WEB_APP_PORT}"
     depends_on:
       - app-db
   app-celery:
