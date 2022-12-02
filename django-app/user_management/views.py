@@ -128,14 +128,6 @@ class SettingsTemplateView(LoginRequiredMixin, TemplateView):
     template_name = 'user_management/settings.html'
 
 
-class PrivacyPolicyView(TemplateView):
-    template_name = "user_management/privacy_policy.html"
-
-
-class CookiePolicyView(TemplateView):
-    template_name = "user_management/cookie_policy.html"
-
-
 @method_decorator(not_authenticated_only, name='dispatch')
 class TokenRequestTemplateView(TemplateView):
     template_name = 'user_management/token_request.html'
