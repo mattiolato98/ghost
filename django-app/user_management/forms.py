@@ -20,15 +20,21 @@ class PlatformUserCreationForm(UserCreationForm):
 
         self.fields['password1'].help_text = None
 
-        privacy_policy_url = reverse_lazy('user_management:privacy-policy')
+        privacy_policy_url = ()
         cookie_policy_url = reverse_lazy('user_management:cookie-policy')
         token_request_url = reverse_lazy('user_management:token-request')
 
         self.fields['privacy_and_cookie_policy_acceptance'].label = mark_safe(_(
-            "I agree with the <strong><a href='{}' target='_blank' class='site-link'>"
-            "privacy policy</a></strong> and the use of essential cookies, according "
-            "with our <strong><a href='{}' target='_blank' class='site-link'>cookie "
-            "policy</a></strong>, in order to allow the proper operation of the app"
+            "I agree with the <strong>"
+            "<a href='https://www.iubenda.com/privacy-policy/13219479'"
+            "class='iubenda-nostyle iubenda-noiframe iubenda-embed iubenda-noiframe site-link'"
+            "title='Privacy Policy'>Privacy Policy</a>"
+            "</strong> and the use of essential cookies, according "
+            "with our <strong>"
+            "<a href='https://www.iubenda.com/privacy-policy/13219479/cookie-policy'"
+            "class='iubenda-nostyle iubenda-noiframe iubenda-embed iubenda-noiframe site-link' "
+            "title='Cookie Policy'>Cookie Policy</a>"
+            "</strong>, in order to allow the proper operation of the app"
         ).format(privacy_policy_url, cookie_policy_url))
 
         self.fields['token'].help_text = mark_safe(_(
